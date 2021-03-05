@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.liveData
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.itborneo.ugithub.core.repository.MainRepository
 import id.itborneo.ugithub.core.utils.Resource
@@ -31,7 +32,12 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        initListCity()
+        initList()
+
+        observerData()
+    }
+
+    private fun observerData() {
         getUsers().observe(viewLifecycleOwner) {
             Log.d(TAG, "${it.status}, ${it.message} and ${it.data}")
             it.data?.toList()?.let { it1 -> adapter.set(it1) }
@@ -48,11 +54,13 @@ class HomeFragment : Fragment() {
         }
     }
 
-    private fun initListCity() {
+    private fun initList() {
         binding.rvHome.layoutManager = LinearLayoutManager(requireContext())
         adapter = HomeAdapter {
 //            actionMoveToDetail(it)
         }
+        binding.rvHome.layoutManager = GridLayoutManager(context, 2)
+
         binding.rvHome.adapter = adapter
 
 

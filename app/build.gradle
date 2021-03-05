@@ -65,5 +65,8 @@ dependencies {
     //Picasso
     implementation 'com.squareup.picasso:picasso:2.71828'
 
+    //Bottom navigation
+    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.6'
+
 
 }
