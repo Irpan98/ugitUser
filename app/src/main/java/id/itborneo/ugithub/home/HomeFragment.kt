@@ -25,6 +25,7 @@ open class HomeFragment : Fragment() {
     private lateinit var adapter: HomeAdapter
     private lateinit var binding: FragmentHomeBinding
     private val viewModel: HomeViewModel by viewModels()
+    private lateinit var listUser: List<UserModel>
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,6 +42,8 @@ open class HomeFragment : Fragment() {
         initNav(view)
         initSearch()
         observerData()
+//        observerDataSearch()
+//        observerSearched()
     }
 
     private fun initSearch() {
@@ -54,9 +57,19 @@ open class HomeFragment : Fragment() {
                 }
 
                 override fun onQueryTextChange(newText: String?): Boolean {
-                    if (newText != null && newText.length >= 3) {
-                        Log.d(TAG, "onQueryTextChange "+newText)
-                        viewModel.searchUser(newText)
+                    if (newText != null && newText.length >= 1) {
+//                        val searchedUser = viewModel.searchUser(newText)
+
+
+                        val newList = listUser.filter {
+                            it.login?.contains(newText, true)!!
+                        }
+
+                        adapter.set(newList)
+//                        viewModel.query.postValue(newText)
+//                        viewModel.searchUser()
+                    } else {
+                        adapter.set(listUser)
                     }
                     return true
                 }
@@ -68,7 +81,12 @@ open class HomeFragment : Fragment() {
         viewModel.users.observe(viewLifecycleOwner) {
             when (it.status) {
                 Status.SUCCESS -> {
-                    it.data?.toList()?.let { it1 -> adapter.set(it1) }
+                    if (it.data != null) {
+                        listUser = it.data
+                        it.data.toList().let { it1 -> adapter.set(it1) }
+                    }
+
+
                 }
                 Status.LOADING -> {
 
@@ -83,7 +101,40 @@ open class HomeFragment : Fragment() {
 
         }
     }
-
+//
+//    private fun observerDataSearch() {
+//        viewModel.query.observe(viewLifecycleOwner) {
+//            Log.d(TAG, "observerDataSearch $it")
+////            viewModel.searchUser()
+//        }
+//    }
+//
+//
+//    private fun observerSearched() {
+//        viewModel.userSearched.observe(viewLifecycleOwner) {
+//            when (it.status) {
+//                Status.SUCCESS -> {
+//                    Log.d(TAG, "${it.status}, ${it.message} and ${it.data}")
+//
+//                    it.data?.items.let { it1 ->
+//                        if (it1 != null) {
+//                            adapter.set(it1)
+//                        }
+//                    }
+//                }
+//                Status.LOADING -> {
+//
+//                }
+//
+//                Status.ERROR -> {
+//                    Log.d(TAG, "${it.status}, ${it.message} and ${it.data}")
+//
+//                }
+//            }
+//
+//
+//        }
+//    }
 
     private fun initList() {
         binding.rvHome.layoutManager = LinearLayoutManager(requireContext())
