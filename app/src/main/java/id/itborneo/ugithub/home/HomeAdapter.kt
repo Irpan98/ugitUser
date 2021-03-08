@@ -39,7 +39,7 @@ class HomeAdapter(private val listener: (UserModel) -> Unit) :
         fun bind(user: UserModel) {
             itemBinding.apply {
                 tvTitle.text = user.login
-                tvSubTitle.text = user.nodeId
+                tvSubTitle.text = user.htmlUrl
 
                 Picasso.get()
                     .load(user.avatarUrl)
@@ -50,11 +50,6 @@ class HomeAdapter(private val listener: (UserModel) -> Unit) :
                     listener(user)
                 }
 
-//                if (city.isfavorite) {
-//                    ivFavorite.setImageResource(R.drawable.ic_favorite_true)
-//                } else {
-//                    ivFavorite.setImageResource(R.drawable.ic_favorite)
-//                }
             }
         }
     }

@@ -1,6 +1,5 @@
 package id.itborneo.ugithub.core.networks
 
-import id.itborneo.blanjaa.core.source.remote.network.ApiService
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit

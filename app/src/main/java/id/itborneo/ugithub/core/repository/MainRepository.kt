@@ -8,4 +8,8 @@ class MainRepository() {
 
     suspend fun getUsers() = api.getUsers()
 
+    suspend fun searchUser(query: String) = api.searchUsers(query)
+
+
+    suspend fun getDetailUser(username: String) = api.detailUser(username)
 }

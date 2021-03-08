@@ -1,8 +1,11 @@
 package id.itborneo.ugithub.core.model
 
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 data class UserModel(
     @SerializedName("avatar_url")
     var avatarUrl: String?,
@@ -40,4 +43,4 @@ data class UserModel(
     var type: String?,
     @SerializedName("url")
     var url: String?
-)
+) : Parcelable
