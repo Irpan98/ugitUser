@@ -38,7 +38,7 @@ class HomeAdapter(private val listener: (UserModel) -> Unit) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(user: UserModel) {
             itemBinding.apply {
-                tvTitle.text = user.login
+                tvName.text = user.login
                 tvSubTitle.text = user.htmlUrl
 
                 Picasso.get()

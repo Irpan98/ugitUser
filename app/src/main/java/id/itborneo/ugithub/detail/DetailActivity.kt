@@ -56,12 +56,16 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun updateUI(userDetail: UserDetailModel?) {
-        binding.tvUsername.text = userDetail?.login
-        binding.tvFollower.text = userDetail?.followers.toString()
-        binding.tvFollowing.text = userDetail?.following.toString()
-        binding.tvLocation.text = userDetail?.location
-        binding.tvName.text = userDetail?.name
-        binding.tvRepository.text = userDetail?.publicRepos.toString()
+        binding.incInfo.apply {
+            tvName.text = userDetail?.name ?: "N/A"
+            tvUsername.text = userDetail?.login
+            tvAddress.text = userDetail?.location ?: "N/A"
+            tvWorkplace.text = userDetail?.company ?: "N/A"
+            tvFollower.text = userDetail?.followers.toString()
+            tvFollowing.text = userDetail?.following.toString()
+            tvRepository.text = userDetail?.publicRepos.toString()
+        }
+
         Picasso.get()
             .load(userDetail?.avatarUrl)
             .fit()

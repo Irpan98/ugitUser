@@ -47,6 +47,7 @@ open class HomeFragment : Fragment() {
     }
 
     private fun initSearch() {
+
         binding.apply {
             sbCities.setOnClickListener {
                 sbCities.onActionViewExpanded()
@@ -57,17 +58,14 @@ open class HomeFragment : Fragment() {
                 }
 
                 override fun onQueryTextChange(newText: String?): Boolean {
-                    if (newText != null && newText.length >= 1) {
-//                        val searchedUser = viewModel.searchUser(newText)
-
+                    if (newText != null && newText.isNotEmpty()) {
 
                         val newList = listUser.filter {
                             it.login?.contains(newText, true)!!
                         }
 
                         adapter.set(newList)
-//                        viewModel.query.postValue(newText)
-//                        viewModel.searchUser()
+
                     } else {
                         adapter.set(listUser)
                     }

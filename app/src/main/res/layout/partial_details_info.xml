@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Name" />
+
+    <TextView
+        android:id="@+id/tvUsername"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="4dp"
+        tools:text="username" />
+
+    <TextView
+        android:id="@+id/tvAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
+        android:textSize="16sp"
+        app:drawableLeftCompat="@drawable/ic_location"
+        tools:text="address" />
+
+    <TextView
+        android:id="@+id/tvWorkplace"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:textSize="16sp"
+        app:drawableLeftCompat="@drawable/ic_work"
+        tools:text="work place" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/tvFollower"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            tools:text="11156" />
+
+        <TextView
+            android:id="@+id/tvFollowing"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            tools:text="11156" />
+
+        <TextView
+            android:id="@+id/tvRepository"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            tools:text="11156" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:src="@mipmap/ic_launcher">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/followers" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/following" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:text="@string/repositories" />
+    </LinearLayout>
+</LinearLayout>
