@@ -39,12 +39,10 @@ class FavoriteAdapter(private val listener: (FavoriteModel) -> Unit) :
         fun bind(user: FavoriteModel) {
             itemBinding.apply {
                 tvName.text = user.login
-                tvSubtitle.text = user.htmlUrl
+                tvSubtitle.text = user.htmlUrl.removeRange(0, 8)
 
                 Picasso.get()
                     .load(user.avatarUrl)
-                    .fit()
-                    .centerCrop()
                     .into(ivImage)
                 clItem.setOnClickListener {
                     listener(user)
@@ -53,6 +51,8 @@ class FavoriteAdapter(private val listener: (FavoriteModel) -> Unit) :
             }
         }
     }
+
+
 
 
 }

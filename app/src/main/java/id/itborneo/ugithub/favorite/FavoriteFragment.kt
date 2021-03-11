@@ -12,7 +12,6 @@ import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import id.itborneo.ugithub.R
-import id.itborneo.ugithub.core.enums.Status
 import id.itborneo.ugithub.core.factory.ViewModelFactory
 import id.itborneo.ugithub.core.local.AppDatabase
 import id.itborneo.ugithub.core.local.FavoriteModel
@@ -34,6 +33,14 @@ class FavoriteFragment : Fragment() {
         ViewModelFactory(MainRepository(dao))
     }
 
+    override fun onResume() {
+        super.onResume()
+        Log.d(TAG, "onResume ")
+
+        viewModel.refreshFavorites()
+
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -47,7 +54,7 @@ class FavoriteFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initList()
         initNav(view)
-        observerData()
+        observerFavorite()
     }
 
     private fun initList() {
@@ -63,25 +70,39 @@ class FavoriteFragment : Fragment() {
 
     }
 
-    private fun observerData() {
+    private fun observerFavorite() {
         viewModel.favorites.observe(viewLifecycleOwner) {
-            when (it.status) {
-                Status.SUCCESS -> {
-                    if (it.data != null) {
-                        listUser = it.data
-                        it.data.toList().let { it1 -> adapter.set(it1) }
-                    }
+//            Log.d(TAG, "observerFavorite ${it.status}, ${it.message} and ${it.data}")
 
-                }
-                Status.LOADING -> {
 
-                }
+            adapter.set(it)
 
-                Status.ERROR -> {
-                    Log.d(TAG, "${it.status}, ${it.message} and ${it.data}")
+            if (it.isEmpty()) {
+                emptyListUI(true)
+            } else {
+                emptyListUI(false)
 
-                }
             }
+//            when (it.status) {
+//                Status.SUCCESS -> {
+//                    if (it.data != null) {
+//                        listUser = it.data
+//                        it.data.toList().let { it1 -> adapter.set(it1) }
+//
+//                    } else {
+//                        emptyListUI(true)
+//                    }
+//
+//                }
+//                Status.LOADING -> {
+//
+//                }
+//
+//                Status.ERROR -> {
+//                    Log.d(TAG, "${it.status}, ${it.message} and ${it.data}")
+//
+//                }
+//            }
 
 
         }
@@ -101,6 +122,16 @@ class FavoriteFragment : Fragment() {
     private fun initNav(view: View) {
         navController = Navigation.findNavController(view)
 
+    }
+
+    private fun emptyListUI(isEmpty: Boolean) {
+        if (isEmpty) {
+            binding.iclEmpty.apply {
+                root.visibility = View.VISIBLE
+                tvTitle.text = getString(R.string.empty_list_favorite)
+            }
+
+        }
     }
 
 

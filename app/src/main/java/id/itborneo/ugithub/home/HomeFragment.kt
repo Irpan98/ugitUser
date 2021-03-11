@@ -53,7 +53,6 @@ open class HomeFragment : Fragment() {
     }
 
     private fun initSearch() {
-
         binding.sbUsers.apply {
             setOnClickListener {
                 onActionViewExpanded()
@@ -64,6 +63,7 @@ open class HomeFragment : Fragment() {
                 }
 
                 override fun onQueryTextChange(newText: String?): Boolean {
+                    if (!::listUser.isInitialized) return false
                     if (newText != null && newText.isNotEmpty()) {
 
                         val newList = listUser.filter {
@@ -78,7 +78,6 @@ open class HomeFragment : Fragment() {
                             }
                         } else {
                             binding.iclEmpty.root.visibility = View.GONE
-
                         }
 
                     } else {
@@ -98,15 +97,17 @@ open class HomeFragment : Fragment() {
                         listUser = it.data
                         it.data.toList().let { it1 -> adapter.set(it1) }
                     }
-
+                    showLoading(false)
 
                 }
                 Status.LOADING -> {
-
+                    showLoading(true)
+                    binding.incLoading.root.visibility = View.VISIBLE
                 }
-
                 Status.ERROR -> {
-                    Log.d(TAG, "${it.status}, ${it.message} and ${it.data}")
+                    Log.e(TAG, "${it.status}, ${it.message} and ${it.data}")
+                    showError()
+                    showLoading(false)
 
                 }
             }
@@ -137,6 +138,20 @@ open class HomeFragment : Fragment() {
 
     private fun initNav(view: View) {
         navController = Navigation.findNavController(view)
-
     }
+
+    private fun showError() {
+        binding.incLoading.root.visibility = View.VISIBLE
+    }
+
+    private fun showLoading(showIt: Boolean) {
+        binding.incLoading.root.apply {
+            visibility = if (showIt) {
+                View.VISIBLE
+            } else {
+                View.GONE
+            }
+        }
+    }
+
 }

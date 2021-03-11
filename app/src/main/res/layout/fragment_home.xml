@@ -38,6 +38,13 @@
                     app:defaultQueryHint="@string/find_user" />
             </androidx.cardview.widget.CardView>
 
+
+            <include
+                android:id="@+id/inc_loading"
+                layout="@layout/partial_loading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
             <include
                 android:id="@+id/icl_empty"
                 layout="@layout/partial_empty"
@@ -57,6 +64,11 @@
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <include
+        android:id="@+id/inc_error"
+        layout="@layout/partial_error"
+        android:visibility="gone" />
 
 
 </RelativeLayout>

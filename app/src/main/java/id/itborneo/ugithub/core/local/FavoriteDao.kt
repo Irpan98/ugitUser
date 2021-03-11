@@ -1,5 +1,6 @@
 package id.itborneo.ugithub.core.local
 
+import androidx.lifecycle.LiveData
 import androidx.room.*
 
 @Dao
@@ -7,7 +8,7 @@ interface FavoriteDao {
 
 
     @Query("SELECT * FROM favorite")
-    fun getFavorites(): List<FavoriteModel>
+    fun getFavorites(): LiveData<List<FavoriteModel>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addFavorite(favorite: FavoriteModel)

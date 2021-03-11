@@ -18,8 +18,9 @@ import kotlinx.coroutines.launch
 class DetailViewModel(private val repository: MainRepository) : ViewModel() {
 
     private val TAG = "DetailViewModel"
-    lateinit var username: String
     lateinit var detailUser: LiveData<Resource<UserDetailModel>>
+     var isFromFavoriteFragment = false
+
 
     var isFavorite = MutableLiveData(false)
     private var favorite: FavoriteModel? = null
@@ -36,12 +37,14 @@ class DetailViewModel(private val repository: MainRepository) : ViewModel() {
 
     }
 
-    fun checkisFavorite(id: Int) {
+    fun checkIsFavorite(id: Int) {
         CoroutineScope(GlobalScope.coroutineContext).launch {
             favorite = repository.geSingleFavorite(id)
+
             if (favorite == null || id == 0) {
                 isFavorite.postValue(false)
             } else {
+                isFromFavoriteFragment = true
                 isFavorite.postValue(true)
             }
         }

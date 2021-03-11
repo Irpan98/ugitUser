@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import id.itborneo.ugithub.R
 import id.itborneo.ugithub.core.model.UserModel
 import id.itborneo.ugithub.databinding.ItemUserBinding
 
@@ -39,7 +40,7 @@ class HomeAdapter(private val listener: (UserModel) -> Unit) :
         fun bind(user: UserModel) {
             itemBinding.apply {
                 tvName.text = user.login
-                tvSubtitle.text = user.htmlUrl?.removeRange(0,8)
+                tvSubtitle.text = user.htmlUrl?.removeRange(0, 8)
 
                 Picasso.get()
                     .load(user.avatarUrl)

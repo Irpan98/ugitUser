@@ -45,8 +45,21 @@
         <item name="android:textSize">14sp</item>
     </style>
 
+    <style name="ItborneoText.TitleSecondary">
+        <item name="android:textColor">@color/text_black</item>
+        <item name="fontFamily">@font/montserrat_bold</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">15sp</item>
+    </style>
+
     <style name="ItborneoText.Subtitle">
         <item name="android:textColor">@color/text_black_second</item>
+        <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="ItborneoText.Text">
+        <item name="fontFamily">@font/montserrat_bold</item>
+        <item name="android:textColor">@color/text_black</item>
         <item name="android:textSize">12sp</item>
     </style>
 

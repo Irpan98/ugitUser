@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
@@ -49,7 +50,7 @@ class DetailActivity : AppCompatActivity() {
     private fun initViewModel() {
         intentData.let {
             viewModel.getDetailUser(it?.login ?: "")
-            viewModel.checkisFavorite(it?.id ?: 0)
+            viewModel.checkIsFavorite(it?.id ?: 0)
         }
 
     }
@@ -72,6 +73,7 @@ class DetailActivity : AppCompatActivity() {
                     viewModel.removeFavorite()
                     showToastFavoriteStatus(false)
                 } else {
+                    if (!::userDetail.isInitialized) return@setOnClickListener
                     viewModel.addToFavorite(userDetail)
                     showToastFavoriteStatus(true)
                 }
@@ -94,21 +96,27 @@ class DetailActivity : AppCompatActivity() {
         viewModel.detailUser.observe(this) {
             when (it.status) {
                 Status.SUCCESS -> {
+                    showLoading(false)
+
                     if (it.data != null) {
                         updateUI(it.data)
                         userDetail = it.data
                         Log.d(TAG, "${it.status}, ${it.message} and ${it.data}")
                     } else {
-                        //Data kosong
+                        showError()
                     }
 
                 }
                 Status.LOADING -> {
-                    //loading
+                    showLoading(true)
+
                 }
                 Status.ERROR -> {
+                    showLoading(false)
+
                     //something wrong
-                    Log.d(TAG, "${it.status}, ${it.message} and ${it.data}")
+                    Log.e(TAG, "${it.status}, ${it.message} and ${it.data}")
+                    showError()
 
                 }
             }
@@ -118,6 +126,7 @@ class DetailActivity : AppCompatActivity() {
     private fun observerFavoriteStatus() {
         viewModel.isFavorite.observe(this) {
             updateFavoriteStatusUI(it)
+
         }
     }
 
@@ -141,6 +150,12 @@ class DetailActivity : AppCompatActivity() {
             tvRepository.text = userDetail?.publicRepos.toString()
         }
 
+        binding.apply {
+            btnToGithub.visibility = View.VISIBLE
+            btnFavorite.visibility = View.VISIBLE
+
+        }
+
         Picasso.get()
             .load(userDetail?.avatarUrl)
             .fit()
@@ -155,7 +170,32 @@ class DetailActivity : AppCompatActivity() {
         } else {
             ToastTop.show(this, getString(R.string.removed_from_favorite))
         }
+    }
 
+    private fun showError() {
+        binding.incLoading.root.visibility = View.VISIBLE
+    }
+
+    private fun showLoading(showIt: Boolean) {
+        binding.incLoading.apply {
+            root.visibility = if (showIt) {
+                parentShimmer.startShimmer()
+
+                View.VISIBLE
+            } else {
+                parentShimmer.stopShimmer()
+
+                View.GONE
+            }
+        }
+
+        binding.incInfo.root.apply {
+            visibility = if (showIt) {
+                View.GONE
+            } else {
+                View.VISIBLE
+            }
+        }
     }
 
 

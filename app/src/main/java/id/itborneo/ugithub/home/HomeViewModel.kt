@@ -27,16 +27,4 @@ class HomeViewModel(private val repo: MainRepository) : ViewModel() {
         }
     }
 
-//    fun searchUser() = liveData(Dispatchers.IO) {
-//        Log.d(TAG, "searchUser ${query.value}")
-//        emit(Resource.loading(data = null))
-//        try {
-//            val itemsUser = mainRepository.searchUser(query.value ?: "")
-//            emit(Resource.success(data = itemsUser))
-//        } catch (exception: Exception) {
-//            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred! searchUser"))
-//        }
-//    }
-
-
 }

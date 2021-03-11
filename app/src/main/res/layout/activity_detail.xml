@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     tools:context=".detail.DetailActivity">
 
@@ -12,45 +13,77 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@android:color/transparent"
+        android:contentDescription="@string/back"
         android:elevation="1dp"
         android:src="@drawable/ic_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/iv_avatar"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:scaleType="centerCrop"
-        android:src="@color/grey"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/padding_layout_2">
+
+            <ImageView
+                android:id="@+id/iv_avatar"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:contentDescription=" "
+                android:scaleType="centerCrop"
+                android:src="@color/grey"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <include
+                android:id="@+id/inc_loading"
+                layout="@layout/partial_loading_details_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintTop_toBottomOf="@id/iv_avatar" />
+
+            <include
+                android:id="@+id/inc_info"
+                layout="@layout/partial_details_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="invisible"
+                app:layout_constraintTop_toBottomOf="@id/iv_avatar" />
+
+            <Button
+                android:id="@+id/btnToGithub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/padding_layout"
+                android:layout_marginTop="@dimen/padding_layout"
+                android:drawableStart="@drawable/ic_github_white"
+                android:text="@string/github"
+                android:textAllCaps="false"
+                android:textStyle="bold"
+                android:visibility="invisible"
+                app:layout_constraintTop_toBottomOf="@id/inc_info"
+                tools:visibility="visible" />
+
+            <ImageButton
+                android:id="@+id/btnFavorite"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:contentDescription="@string/favorite_button"
+                android:src="@drawable/ic_favorite_true"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="@+id/iv_avatar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_avatar"
+                tools:visibility="visible" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
     <include
-        android:id="@+id/inc_info"
-        layout="@layout/partial_details_info"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/iv_avatar" />
 
-    <Button
-        android:id="@+id/btnToGithub"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="@dimen/padding_layout"
-        android:drawableStart="@drawable/ic_github_white"
-        android:layout_marginTop="@dimen/padding_layout"
-        android:text="Github"
-        android:textAllCaps="false"
-        android:textStyle="bold"
-        app:layout_constraintTop_toBottomOf="@id/inc_info" />
-
-    <ImageButton
-        android:id="@+id/btnFavorite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@android:color/transparent"
-        android:src="@drawable/ic_favorite_true"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/iv_avatar" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+        android:id="@+id/inc_error"
+        layout="@layout/partial_error"
+        android:visibility="invisible" />
+</RelativeLayout>
