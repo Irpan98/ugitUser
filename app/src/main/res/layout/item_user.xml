@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_margin="10dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/backgroundSecond"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    android:background="@color/background_second"
+    android:elevation="10dp"
+    app:cardCornerRadius="10dp">
 
     <LinearLayout
-        android:id="@+id/clItem"
+        android:id="@+id/cl_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:addStatesFromChildren="true"
@@ -18,13 +19,14 @@
         android:clickable="true"
         android:focusable="true"
         android:orientation="vertical"
-        android:paddingBottom="10dp">
+        android:paddingHorizontal="@dimen/padding_layout"
+        android:paddingVertical="@dimen/padding_layout_2">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ivImage"
+            android:id="@+id/iv_image"
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_margin="24dp"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="30dp"
             android:clickable="false"
             android:contentDescription="@string/image_user"
             android:focusable="false"
@@ -32,26 +34,21 @@
             tools:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/tvName"
-            style="@style/ItemTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_layout"
-            android:layout_marginStart="12dp"
+            android:id="@+id/tv_name"
+            style="@style/ItborneoText.Title"
+            android:layout_gravity="center_horizontal"
             android:ellipsize="end"
             android:lines="1"
-            tools:text="Nama Disini" />
+            tools:text="Nama Here" />
 
         <TextView
-            android:id="@+id/tvSubTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_layout_2"
+            android:id="@+id/tv_subtitle"
+            style="@style/ItborneoText.Subtitle"
+            android:layout_gravity="center_horizontal"
             android:ellipsize="end"
             android:lines="1"
-            app:layout_constraintTop_toBottomOf="@+id/tvName"
-            tools:text="sub title here sub title here sub title here sub ti " />
+            tools:text="sub title here sub title here" />
 
 
     </LinearLayout>
-</RelativeLayout>
+</androidx.cardview.widget.CardView>

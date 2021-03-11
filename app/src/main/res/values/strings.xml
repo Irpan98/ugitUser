@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Ugithub</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="image_user">image user</string>
     <string name="me">About Me</string>
@@ -8,4 +7,16 @@
     <string name="followers">Followers</string>
     <string name="following">Following</string>
     <string name="repositories">Repositories</string>
+    <string name="favorites">Favorites</string>
+    <string name="find_user">Find Github User</string>
+    <string name="list_is_empty">List is Empty</string>
+    <string name="user_not_found">User Not Found in Our Data</string>
+    <string name="thanks_to">Thanks To Hoai Le @Lottie for animation</string>
+    <string name="in_development">Feature in Development</string>
+    <string name="credits">Credits</string>
+    <string name="contact_me">Contact Me</string>
+    <string name="added_to_favorite">Added to Favorite</string>
+    <string name="removed_from_favorite">Removed from Favorite</string>
+
+
 </resources>

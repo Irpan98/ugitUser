@@ -14,8 +14,11 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import id.itborneo.ugithub.R
+import id.itborneo.ugithub.core.enums.Status
+import id.itborneo.ugithub.core.factory.ViewModelFactory
+import id.itborneo.ugithub.core.local.AppDatabase
 import id.itborneo.ugithub.core.model.UserModel
-import id.itborneo.ugithub.core.utils.enums.Status
+import id.itborneo.ugithub.core.repository.MainRepository
 import id.itborneo.ugithub.databinding.FragmentHomeBinding
 import id.itborneo.ugithub.detail.DetailActivity.Companion.EXTRA_USER
 
@@ -24,8 +27,13 @@ open class HomeFragment : Fragment() {
     private val TAG = "HomeFragment"
     private lateinit var adapter: HomeAdapter
     private lateinit var binding: FragmentHomeBinding
-    private val viewModel: HomeViewModel by viewModels()
     private lateinit var listUser: List<UserModel>
+    private lateinit var navController: NavController
+
+    private val viewModel: HomeViewModel by viewModels {
+        val dao = AppDatabase.getInstance(requireContext()).favoriteDao()
+        ViewModelFactory(MainRepository(dao))
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,17 +50,15 @@ open class HomeFragment : Fragment() {
         initNav(view)
         initSearch()
         observerData()
-//        observerDataSearch()
-//        observerSearched()
     }
 
     private fun initSearch() {
 
-        binding.apply {
-            sbCities.setOnClickListener {
-                sbCities.onActionViewExpanded()
+        binding.sbUsers.apply {
+            setOnClickListener {
+                onActionViewExpanded()
             }
-            sbCities.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            setOnQueryTextListener(object : SearchView.OnQueryTextListener {
                 override fun onQueryTextSubmit(query: String?): Boolean {
                     return true
                 }
@@ -63,8 +69,17 @@ open class HomeFragment : Fragment() {
                         val newList = listUser.filter {
                             it.login?.contains(newText, true)!!
                         }
-
                         adapter.set(newList)
+
+                        if (newList.isNullOrEmpty()) {
+                            binding.iclEmpty.apply {
+                                root.visibility = View.VISIBLE
+                                tvTitle.text = requireContext().getString(R.string.user_not_found)
+                            }
+                        } else {
+                            binding.iclEmpty.root.visibility = View.GONE
+
+                        }
 
                     } else {
                         adapter.set(listUser)
@@ -99,40 +114,6 @@ open class HomeFragment : Fragment() {
 
         }
     }
-//
-//    private fun observerDataSearch() {
-//        viewModel.query.observe(viewLifecycleOwner) {
-//            Log.d(TAG, "observerDataSearch $it")
-////            viewModel.searchUser()
-//        }
-//    }
-//
-//
-//    private fun observerSearched() {
-//        viewModel.userSearched.observe(viewLifecycleOwner) {
-//            when (it.status) {
-//                Status.SUCCESS -> {
-//                    Log.d(TAG, "${it.status}, ${it.message} and ${it.data}")
-//
-//                    it.data?.items.let { it1 ->
-//                        if (it1 != null) {
-//                            adapter.set(it1)
-//                        }
-//                    }
-//                }
-//                Status.LOADING -> {
-//
-//                }
-//
-//                Status.ERROR -> {
-//                    Log.d(TAG, "${it.status}, ${it.message} and ${it.data}")
-//
-//                }
-//            }
-//
-//
-//        }
-//    }
 
     private fun initList() {
         binding.rvHome.layoutManager = LinearLayoutManager(requireContext())
@@ -141,8 +122,6 @@ open class HomeFragment : Fragment() {
         }
         binding.rvHome.layoutManager = GridLayoutManager(context, 2)
         binding.rvHome.adapter = adapter
-
-
     }
 
     private fun actionToDetail(userModel: UserModel) {
@@ -154,8 +133,6 @@ open class HomeFragment : Fragment() {
         )
 
     }
-
-    open lateinit var navController: NavController
 
 
     private fun initNav(view: View) {

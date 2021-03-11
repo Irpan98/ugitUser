@@ -1,6 +1,6 @@
 package id.itborneo.ugithub.core.utils
 
-import id.itborneo.ugithub.core.utils.enums.Status
+import id.itborneo.ugithub.core.enums.Status
 
 data class Resource<out T>(val status: Status, val data: T?, val message: String?) {
     companion object {

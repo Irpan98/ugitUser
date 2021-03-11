@@ -4,8 +4,11 @@ buildscript {
     ext {
         kotlin_version = "1.4.31"
         retrofit_version = "2.9.0"
-        logging_interceptor_version = '4.9.0'
+        okhttp_version = '4.9.0'
         nav_version = "2.3.3"
+        room_version = "2.2.6"
+        picasso_version = "2.71828"
+        lottieVersion = "3.6.1"
     }
 
     repositories {

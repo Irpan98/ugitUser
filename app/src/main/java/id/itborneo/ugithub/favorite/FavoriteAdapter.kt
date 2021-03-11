@@ -1,21 +1,21 @@
-package id.itborneo.ugithub.home
+package id.itborneo.ugithub.favorite
 
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import id.itborneo.ugithub.core.model.UserModel
+import id.itborneo.ugithub.core.local.FavoriteModel
 import id.itborneo.ugithub.databinding.ItemUserBinding
 
 
-class HomeAdapter(private val listener: (UserModel) -> Unit) :
-    RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
+class FavoriteAdapter(private val listener: (FavoriteModel) -> Unit) :
+    RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
     private val TAG = "PlacesAdapter"
 
-    private var cities = listOf<UserModel>()
+    private var cities = listOf<FavoriteModel>()
 
-    fun set(cities: List<UserModel>) {
+    fun set(cities: List<FavoriteModel>) {
         this.cities = cities
         Log.d(TAG, cities.toString())
         notifyDataSetChanged()
@@ -36,13 +36,15 @@ class HomeAdapter(private val listener: (UserModel) -> Unit) :
 
     inner class ViewHolder(private val itemBinding: ItemUserBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
-        fun bind(user: UserModel) {
+        fun bind(user: FavoriteModel) {
             itemBinding.apply {
                 tvName.text = user.login
-                tvSubtitle.text = user.htmlUrl?.removeRange(0,8)
+                tvSubtitle.text = user.htmlUrl
 
                 Picasso.get()
                     .load(user.avatarUrl)
+                    .fit()
+                    .centerCrop()
                     .into(ivImage)
                 clItem.setOnClickListener {
                     listener(user)

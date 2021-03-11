@@ -53,7 +53,7 @@ data class UserDetailModel(
 	val gravatarId: String? = null,
 
 	@field:SerializedName("email")
-	val email: Any? = null,
+	val email: String? = null,
 
 	@field:SerializedName("organizations_url")
 	val organizationsUrl: String? = null,

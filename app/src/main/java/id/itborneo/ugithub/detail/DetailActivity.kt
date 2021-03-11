@@ -1,56 +1,131 @@
 package id.itborneo.ugithub.detail
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.squareup.picasso.Picasso
+import id.itborneo.ugithub.R
+import id.itborneo.ugithub.core.enums.Status
+import id.itborneo.ugithub.core.factory.ViewModelFactory
+import id.itborneo.ugithub.core.local.AppDatabase
 import id.itborneo.ugithub.core.model.UserDetailModel
 import id.itborneo.ugithub.core.model.UserModel
-import id.itborneo.ugithub.core.utils.enums.Status
+import id.itborneo.ugithub.core.repository.MainRepository
+import id.itborneo.ugithub.core.utils.ToastTop
 import id.itborneo.ugithub.databinding.ActivityDetailBinding
 
 class DetailActivity : AppCompatActivity() {
 
     companion object {
         const val EXTRA_USER = "extra_user"
+        private const val TAG = "DetailActivity"
     }
 
-    private val TAG = "DetailActivity"
-
     private lateinit var binding: ActivityDetailBinding
-    private val viewModel: DetailViewModel by viewModels()
+    private lateinit var userDetail: UserDetailModel
+
+    private var intentData: UserModel? = null
+    private val viewModel: DetailViewModel by viewModels {
+        val dao = AppDatabase.getInstance(this).favoriteDao()
+        ViewModelFactory(MainRepository(dao))
+    }
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        initBinding()
+        retrieveData()
+        initViewModel()
+        buttonListener()
+        observerDetailUser()
+        observerFavoriteStatus()
+
+    }
+
+    private fun initViewModel() {
+        intentData.let {
+            viewModel.getDetailUser(it?.login ?: "")
+            viewModel.checkisFavorite(it?.id ?: 0)
+        }
+
+    }
+
+    private fun retrieveData() {
+        intentData = intent.extras?.getParcelable(EXTRA_USER)
+    }
+
+    private fun initBinding() {
         binding = ActivityDetailBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
-
-        val intentUser = intent.extras?.getParcelable<UserModel>(EXTRA_USER)
-
-        viewModel.getDetailUser(intentUser?.login ?: "")
-
-        observerData()
     }
 
-    private fun observerData() {
+    private fun buttonListener() {
+        binding.btnFavorite.setOnClickListener {
+            viewModel.apply {
+
+                if (isFavorite.value == true) {
+                    viewModel.removeFavorite()
+                    showToastFavoriteStatus(false)
+                } else {
+                    viewModel.addToFavorite(userDetail)
+                    showToastFavoriteStatus(true)
+                }
+            }
+        }
+
+        binding.btnToGithub.setOnClickListener {
+            val browserIntent = Intent(
+                Intent.ACTION_VIEW, Uri.parse(viewModel.detailUser.value?.data?.htmlUrl)
+            )
+            startActivity(browserIntent)
+        }
+
+        binding.ibBack.setOnClickListener {
+            finish()
+        }
+    }
+
+    private fun observerDetailUser() {
         viewModel.detailUser.observe(this) {
             when (it.status) {
                 Status.SUCCESS -> {
-                    updateUI(it.data)
-                    Log.d(TAG, "${it.status}, ${it.message} and ${it.data}")
+                    if (it.data != null) {
+                        updateUI(it.data)
+                        userDetail = it.data
+                        Log.d(TAG, "${it.status}, ${it.message} and ${it.data}")
+                    } else {
+                        //Data kosong
+                    }
+
                 }
                 Status.LOADING -> {
-
+                    //loading
                 }
-
                 Status.ERROR -> {
+                    //something wrong
                     Log.d(TAG, "${it.status}, ${it.message} and ${it.data}")
 
                 }
             }
+        }
+    }
 
+    private fun observerFavoriteStatus() {
+        viewModel.isFavorite.observe(this) {
+            updateFavoriteStatusUI(it)
+        }
+    }
+
+    private fun updateFavoriteStatusUI(isFavorite: Boolean) {
+        if (isFavorite) {
+            binding.btnFavorite.setImageResource(R.drawable.ic_favorite_true)
+        } else {
+            binding.btnFavorite.setImageResource(R.drawable.ic_favorite_false)
 
         }
     }
@@ -71,6 +146,16 @@ class DetailActivity : AppCompatActivity() {
             .fit()
             .centerCrop()
             .into(binding.ivAvatar)
+    }
+
+    private fun showToastFavoriteStatus(isFavorite: Boolean) {
+        if (isFavorite) {
+            ToastTop.show(this, getString(R.string.added_to_favorite))
+
+        } else {
+            ToastTop.show(this, getString(R.string.removed_from_favorite))
+        }
+
     }
 
 
