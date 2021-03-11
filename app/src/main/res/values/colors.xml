@@ -8,20 +8,19 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!--    Main color-->
+    <color name="blue_darker">#3941A2</color>
+    <color name="blue_main">#808AFD</color>
 
-    <color name="color1">#e7e7de</color>
-    <color name="color2">#008891</color>
-    <color name="color3">#00587a</color>
-    <color name="color4">#0f3057</color>
+    <!--    background-->
+    <color name="background_main">#F0F1F5</color>
+    <color name="background_second">#FFFFFF</color>
 
-
-    <color name="background">#F0F1F5</color>
     <!--    text-->
-    <color name="color_black">#434242</color>
-    <color name="color_black_2">#323131</color>
+    <color name="text_black">#333232</color>
+    <color name="text_black_second">#585151</color>
 
-    <color name="color_grey">#777777</color>
-    <color name="color_grey_2">#D5D4D4</color>
-
-    <color name="color_red">#FE0000</color>
+    <!--    other colors-->
+    <color name="grey">#D5D4D4</color>
+    <color name="red">#FE0000</color>
 </resources>

@@ -28,4 +28,8 @@
         android:name="id.itborneo.ugithub.detail.DetailActivity"
         android:label="activity_detail"
         tools:layout="@layout/activity_detail" />
+    <fragment
+        android:id="@+id/aboutMeFragment"
+        android:name="id.itborneo.ugithub.aboutme.AboutMeFragment"
+        android:label="AboutMeFragment" />
 </navigation>

@@ -1,95 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginVertical="5dp"
-    android:addStatesFromChildren="true"
+    android:layout_margin="6dp"
+    android:background="@color/background_second"
+    android:elevation="10dp"
+    app:cardCornerRadius="10dp">
 
-    android:background="@color/color2"
-    app:cardCornerRadius="2dp"
-    app:cardUseCompatPadding="true">
-
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/clItem"
+    <LinearLayout
+        android:id="@+id/cl_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:addStatesFromChildren="true"
         android:background="?android:attr/selectableItemBackground"
-        android:backgroundTint="#faf9f9"
         android:clickable="true"
         android:focusable="true"
         android:orientation="vertical"
-        android:paddingBottom="10dp">
+        android:paddingHorizontal="@dimen/padding_layout"
+        android:paddingVertical="@dimen/padding_layout_2">
 
-        <ImageView
-            android:id="@+id/ivImage"
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/iv_image"
             android:layout_width="match_parent"
-            android:layout_height="230dp"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="30dp"
             android:clickable="false"
-            android:contentDescription="@string/image"
+            android:contentDescription="@string/image_user"
             android:focusable="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:scaleType="centerCrop"/>
+            tools:background="@android:color/holo_blue_dark"
+            tools:scaleType="centerCrop" />
 
         <TextView
-            android:id="@+id/tvTitle"
-            style="@style/ItemTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="@dimen/padding_layout"
-            android:background="#80000000"
+            android:id="@+id/tv_name"
+            style="@style/ItborneoText.Title"
+            android:layout_gravity="center_horizontal"
             android:ellipsize="end"
             android:lines="1"
-            android:padding="6dp"
-            app:layout_constraintBottom_toBottomOf="@id/ivImage"
-            app:layout_constraintStart_toStartOf="parent"
-            tools:text="Title Here" />
+            tools:text="Nama Here" />
 
         <TextView
-            android:id="@+id/tvSubTitle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="@dimen/padding_layout_2"
-            android:layout_marginTop="10dp"
+            android:id="@+id/tv_subtitle"
+            style="@style/ItborneoText.Subtitle"
+            android:layout_gravity="center_horizontal"
             android:ellipsize="end"
-            android:lines="2"
-            app:layout_constraintTop_toBottomOf="@+id/ivImage"
-            tools:text="sub title here sub title here sub title here sub title here sub title here sub title here sub title here sub title here " />
+            android:lines="1"
+            tools:text="sub title here sub title here" />
 
-        <View
-            android:id="@+id/divider"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginHorizontal="@dimen/padding_layout_2"
-            android:layout_marginTop="@dimen/padding_layout"
-            android:background="?android:attr/dividerVertical"
-            app:layout_constraintStart_toStartOf="@+id/tvSubTitle"
-            app:layout_constraintTop_toBottomOf="@id/tvSubTitle" />
 
-        <ImageView
-            android:id="@+id/ivFavorite"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="10dp"
-            android:contentDescription="@string/image"
-            android:src="@drawable/ic_favorite"
-            app:layout_constraintStart_toStartOf="@+id/tvSubTitle"
-            app:layout_constraintTop_toBottomOf="@+id/divider" />
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginVertical="10dp"
-            android:contentDescription="@string/image"
-            android:src="@drawable/ic_share"
-            app:layout_constraintStart_toEndOf="@+id/ivFavorite"
-            app:layout_constraintTop_toBottomOf="@+id/divider"
-            app:tint="@color/black" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 </androidx.cardview.widget.CardView>

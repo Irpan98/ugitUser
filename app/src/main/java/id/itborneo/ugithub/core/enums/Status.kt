@@ -1,4 +1,4 @@
-package id.itborneo.ugithub.core.utils.enums
+package id.itborneo.ugithub.core.enums
 
 enum class Status {
     SUCCESS,
