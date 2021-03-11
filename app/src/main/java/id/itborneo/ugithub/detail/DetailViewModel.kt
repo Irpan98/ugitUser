@@ -19,7 +19,10 @@ class DetailViewModel(private val repository: MainRepository) : ViewModel() {
 
     lateinit var detailUser: LiveData<Resource<UserDetailModel>>
     private var favorite: FavoriteModel? = null
-    private val tag = "DetailViewModel"
+
+    companion object {
+        private const val TAG = "DetailViewModel"
+    }
 
     private var isFromFavoriteFragment = false
     var isFavorite = MutableLiveData(false)
@@ -58,10 +61,11 @@ class DetailViewModel(private val repository: MainRepository) : ViewModel() {
 
     fun removeFavorite() {
         CoroutineScope(GlobalScope.coroutineContext).launch {
-            if (favorite != null) {
-                repository.removeFavorite(favorite!!)
+            val fav = favorite
+            if (fav != null) {
+                repository.removeFavorite(fav)
             } else {
-                Log.e(tag, "removeFavorite error")
+                Log.e(TAG, "removeFavorite error")
             }
             isFavorite.postValue(false)
         }

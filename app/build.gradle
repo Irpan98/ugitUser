@@ -19,9 +19,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String" , "GITHUB_KEY" , '"b48e0b22dcfbc43d417c0d5b3bc83e9118900a5f"')
+
+
     }
 
     buildTypes {
+        debug
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'

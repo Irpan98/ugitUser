@@ -42,7 +42,6 @@ class DetailActivity : AppCompatActivity() {
         buttonListener()
         observerDetailUser()
         observerFavoriteStatus()
-
     }
 
     private fun initViewModel() {
@@ -50,7 +49,6 @@ class DetailActivity : AppCompatActivity() {
             viewModel.getDetailUser(it?.login ?: "")
             viewModel.checkIsFavorite(it?.id ?: 0)
         }
-
     }
 
     private fun retrieveData() {
@@ -109,8 +107,6 @@ class DetailActivity : AppCompatActivity() {
                 }
                 Status.ERROR -> {
                     showLoading(false)
-
-                    //something wrong
                     Log.e(TAG, "${it.status}, ${it.message} and ${it.data}")
                     showError()
                 }
@@ -133,7 +129,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun updateUI(userDetail: UserDetailModel?) {
-        binding.incInfo.apply {
+        binding.incDetailInfo.apply {
             tvName.text = userDetail?.name ?: "N/A"
             tvUsername.text = userDetail?.login
             tvAddress.text = userDetail?.location ?: "N/A"
@@ -164,7 +160,7 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun showError() {
-        binding.incLoading.root.visibility = View.VISIBLE
+        binding.incError.root.visibility = View.VISIBLE
     }
 
     private fun showLoading(showIt: Boolean) {
@@ -178,7 +174,7 @@ class DetailActivity : AppCompatActivity() {
             }
         }
 
-        binding.incInfo.root.apply {
+        binding.incDetailInfo.root.apply {
             visibility = if (showIt) {
                 View.GONE
             } else {

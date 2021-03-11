@@ -1,5 +1,6 @@
 package id.itborneo.ugithub.core.networks
 
+import id.itborneo.ugithub.BuildConfig
 import id.itborneo.ugithub.core.model.UserDetailModel
 import id.itborneo.ugithub.core.model.UserModel
 import retrofit2.http.GET
@@ -9,12 +10,8 @@ import retrofit2.http.Path
 
 interface ApiService {
 
-    companion object {
-        const val USER_TOKEN = "b48e0b22dcfbc43d417c0d5b3bc83e9118900a5f"
-    }
-
     @GET("users")
-    @Headers("Authorization: token $USER_TOKEN")
+    @Headers("Authorization: token ${BuildConfig.GITHUB_KEY}")
     suspend fun getUsers(): List<UserModel>
 
     @GET("users/{username}")

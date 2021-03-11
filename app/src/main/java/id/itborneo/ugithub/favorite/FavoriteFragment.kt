@@ -13,7 +13,6 @@ import androidx.recyclerview.widget.GridLayoutManager
 import id.itborneo.ugithub.R
 import id.itborneo.ugithub.core.factory.ViewModelFactory
 import id.itborneo.ugithub.core.local.AppDatabase
-import id.itborneo.ugithub.core.local.FavoriteModel
 import id.itborneo.ugithub.core.model.UserModel
 import id.itborneo.ugithub.core.repository.MainRepository
 import id.itborneo.ugithub.core.utils.DataMapperModel
@@ -25,7 +24,6 @@ class FavoriteFragment : Fragment() {
     private lateinit var adapter: FavoriteAdapter
     private lateinit var binding: FragmentFavoriteBinding
     private lateinit var navController: NavController
-    private lateinit var listUser: List<FavoriteModel>
     private val viewModel: FavoriteViewModel by viewModels {
         val dao = AppDatabase.getInstance(requireContext()).favoriteDao()
         ViewModelFactory(MainRepository(dao))

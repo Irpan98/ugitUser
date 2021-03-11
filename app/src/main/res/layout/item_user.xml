@@ -39,7 +39,7 @@
             android:layout_gravity="center_horizontal"
             android:ellipsize="end"
             android:lines="1"
-            tools:text="Nama Here" />
+            tools:text="Name Here" />
 
         <TextView
             android:id="@+id/tv_subtitle"

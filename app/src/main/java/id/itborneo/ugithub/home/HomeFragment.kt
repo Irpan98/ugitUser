@@ -69,8 +69,8 @@ open class HomeFragment : Fragment() {
                     if (!::listUser.isInitialized) return false
                     if (newText != null && newText.isNotEmpty()) {
 
-                        val newList = listUser.filter {
-                            it.login?.contains(newText, true)!!
+                        val newList = listUser.filter { user ->
+                            user.login?.contains(newText, true) ?: false
                         }
                         adapter.set(newList)
 
@@ -138,7 +138,7 @@ open class HomeFragment : Fragment() {
     }
 
     private fun showError() {
-        binding.incLoading.root.visibility = View.VISIBLE
+        binding.incError.root.visibility = View.VISIBLE
     }
 
     private fun showLoading(showIt: Boolean) {

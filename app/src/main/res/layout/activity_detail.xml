@@ -45,7 +45,7 @@
                 app:layout_constraintTop_toBottomOf="@id/iv_avatar" />
 
             <include
-                android:id="@+id/inc_info"
+                android:id="@+id/inc_detail_info"
                 layout="@layout/partial_details_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -63,7 +63,7 @@
                 android:textAllCaps="false"
                 android:textStyle="bold"
                 android:visibility="invisible"
-                app:layout_constraintTop_toBottomOf="@id/inc_info"
+                app:layout_constraintTop_toBottomOf="@id/inc_detail_info"
                 tools:visibility="visible" />
 
             <ImageButton

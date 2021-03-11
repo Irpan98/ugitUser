@@ -7,13 +7,13 @@ import com.squareup.picasso.Picasso
 import id.itborneo.ugithub.core.local.FavoriteModel
 import id.itborneo.ugithub.databinding.ItemUserBinding
 
-
 class FavoriteAdapter(private val listener: (FavoriteModel) -> Unit) :
     RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
 
     private var cities = listOf<FavoriteModel>()
     fun set(cities: List<FavoriteModel>) {
         this.cities = cities
+
         notifyDataSetChanged()
     }
 
