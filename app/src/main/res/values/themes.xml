@@ -12,15 +12,11 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 
-        <!--        background color-->
         <item name="android:windowBackground">@color/background_main</item>
-
         <item name="imageButtonStyle">@style/ImageButton</item>
-
         <item name="android:textViewStyle">@style/ItborneoText</item>
 
     </style>
-
 
     <style name="ImageButton" parent="Widget.AppCompat.ImageButton">
         <item name="android:padding">@dimen/padding_layout</item>
@@ -67,6 +63,4 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textSize">14sp</item>
     </style>
-
-
 </resources>
