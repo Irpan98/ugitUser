@@ -38,7 +38,7 @@
         android:drawablePadding="5dp"
         android:gravity="center_vertical"
         android:paddingTop="@dimen/padding_layout_half"
-        app:drawableLeftCompat="@drawable/ic_work_alt"
+        app:drawableLeftCompat="@drawable/ic_work"
         tools:text="work place" />
 
     <LinearLayout

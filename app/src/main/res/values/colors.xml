@@ -8,11 +8,11 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 
+    <!--    Main color-->
     <color name="blue_darker">#3941A2</color>
     <color name="blue_main">#808AFD</color>
 
-
-<!--    background-->
+    <!--    background-->
     <color name="background_main">#F0F1F5</color>
     <color name="background_second">#FFFFFF</color>
 
@@ -20,6 +20,7 @@
     <color name="text_black">#333232</color>
     <color name="text_black_second">#585151</color>
 
+    <!--    other colors-->
     <color name="grey">#D5D4D4</color>
     <color name="red">#FE0000</color>
 </resources>

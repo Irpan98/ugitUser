@@ -22,6 +22,5 @@
 
         <include layout="@layout/item_user_shimmer" />
 
-
     </LinearLayout>
 </com.facebook.shimmer.ShimmerFrameLayout>

@@ -29,8 +29,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:contentDescription="@null"
-                    android:src="@drawable/ic_circle" />
+                    android:contentDescription="@null" />
 
             </FrameLayout>
 
@@ -74,9 +73,7 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:contentDescription="@null"
-                    android:src="@drawable/ic_circle" />
-
+                    android:contentDescription="@null" />
             </FrameLayout>
 
             <TextView

@@ -38,8 +38,6 @@
                 android:paddingTop="@dimen/padding_layout"
                 android:paddingBottom="5dp"
                 tools:listitem="@layout/item_user" />
-
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
-
 </RelativeLayout>

@@ -32,7 +32,7 @@
                 android:id="@+id/iv_avatar"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:contentDescription=" "
+                android:contentDescription="@string/image_user"
                 android:scaleType="centerCrop"
                 android:src="@color/grey"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -82,7 +82,6 @@
     </ScrollView>
 
     <include
-
         android:id="@+id/inc_error"
         layout="@layout/partial_error"
         android:visibility="invisible" />
