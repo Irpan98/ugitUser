@@ -35,7 +35,6 @@ class AboutMeFragment : Fragment() {
 
         binding.btnCredits.setOnClickListener {
             ToastTop.blueBackgroundShow(requireContext(), getString(R.string.thanks_to))
-
         }
     }
 

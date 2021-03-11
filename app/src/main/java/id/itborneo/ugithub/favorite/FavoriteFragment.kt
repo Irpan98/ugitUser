@@ -1,7 +1,6 @@
 package id.itborneo.ugithub.favorite
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,7 +22,6 @@ import id.itborneo.ugithub.detail.DetailActivity
 
 class FavoriteFragment : Fragment() {
 
-    private val TAG = "FavoriteFragment"
     private lateinit var adapter: FavoriteAdapter
     private lateinit var binding: FragmentFavoriteBinding
     private lateinit var navController: NavController
@@ -31,14 +29,6 @@ class FavoriteFragment : Fragment() {
     private val viewModel: FavoriteViewModel by viewModels {
         val dao = AppDatabase.getInstance(requireContext()).favoriteDao()
         ViewModelFactory(MainRepository(dao))
-    }
-
-    override fun onResume() {
-        super.onResume()
-        Log.d(TAG, "onResume ")
-
-        viewModel.refreshFavorites()
-
     }
 
     override fun onCreateView(
@@ -72,9 +62,6 @@ class FavoriteFragment : Fragment() {
 
     private fun observerFavorite() {
         viewModel.favorites.observe(viewLifecycleOwner) {
-//            Log.d(TAG, "observerFavorite ${it.status}, ${it.message} and ${it.data}")
-
-
             adapter.set(it)
 
             if (it.isEmpty()) {
@@ -83,45 +70,19 @@ class FavoriteFragment : Fragment() {
                 emptyListUI(false)
 
             }
-//            when (it.status) {
-//                Status.SUCCESS -> {
-//                    if (it.data != null) {
-//                        listUser = it.data
-//                        it.data.toList().let { it1 -> adapter.set(it1) }
-//
-//                    } else {
-//                        emptyListUI(true)
-//                    }
-//
-//                }
-//                Status.LOADING -> {
-//
-//                }
-//
-//                Status.ERROR -> {
-//                    Log.d(TAG, "${it.status}, ${it.message} and ${it.data}")
-//
-//                }
-//            }
-
-
         }
     }
 
-
     private fun actionToDetail(user: UserModel) {
-
         val bundle = bundleOf(DetailActivity.EXTRA_USER to user)
         navController.navigate(
             R.id.action_favoriteFragment_to_detailActivity,
             bundle
         )
-
     }
 
     private fun initNav(view: View) {
         navController = Navigation.findNavController(view)
-
     }
 
     private fun emptyListUI(isEmpty: Boolean) {

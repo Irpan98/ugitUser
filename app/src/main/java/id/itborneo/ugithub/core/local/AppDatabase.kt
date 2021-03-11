@@ -24,12 +24,10 @@ abstract class AppDatabase : RoomDatabase() {
                         context.applicationContext,
                         AppDatabase::class.java,
                         "db_favorite"
-                    )
-                        .build()
+                    ).build()
                 }
             }
             return INSTANCE as AppDatabase
-
         }
     }
 }

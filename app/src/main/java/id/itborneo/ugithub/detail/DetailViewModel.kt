@@ -17,13 +17,12 @@ import kotlinx.coroutines.launch
 
 class DetailViewModel(private val repository: MainRepository) : ViewModel() {
 
-    private val TAG = "DetailViewModel"
     lateinit var detailUser: LiveData<Resource<UserDetailModel>>
-     var isFromFavoriteFragment = false
-
-
-    var isFavorite = MutableLiveData(false)
     private var favorite: FavoriteModel? = null
+    private val tag = "DetailViewModel"
+
+    private var isFromFavoriteFragment = false
+    var isFavorite = MutableLiveData(false)
 
     fun getDetailUser(username: String) {
         detailUser = liveData(Dispatchers.IO) {
@@ -34,7 +33,6 @@ class DetailViewModel(private val repository: MainRepository) : ViewModel() {
                 emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
             }
         }
-
     }
 
     fun checkIsFavorite(id: Int) {
@@ -63,12 +61,11 @@ class DetailViewModel(private val repository: MainRepository) : ViewModel() {
             if (favorite != null) {
                 repository.removeFavorite(favorite!!)
             } else {
-                Log.d(TAG, "removeFavorite error")
+                Log.e(tag, "removeFavorite error")
             }
             isFavorite.postValue(false)
         }
     }
-
 }
 
 

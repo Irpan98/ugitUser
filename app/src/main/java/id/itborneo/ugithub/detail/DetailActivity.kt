@@ -27,13 +27,11 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     private lateinit var userDetail: UserDetailModel
-
     private var intentData: UserModel? = null
     private val viewModel: DetailViewModel by viewModels {
         val dao = AppDatabase.getInstance(this).favoriteDao()
         ViewModelFactory(MainRepository(dao))
     }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,7 +66,6 @@ class DetailActivity : AppCompatActivity() {
     private fun buttonListener() {
         binding.btnFavorite.setOnClickListener {
             viewModel.apply {
-
                 if (isFavorite.value == true) {
                     viewModel.removeFavorite()
                     showToastFavoriteStatus(false)
@@ -109,7 +106,6 @@ class DetailActivity : AppCompatActivity() {
                 }
                 Status.LOADING -> {
                     showLoading(true)
-
                 }
                 Status.ERROR -> {
                     showLoading(false)
@@ -117,7 +113,6 @@ class DetailActivity : AppCompatActivity() {
                     //something wrong
                     Log.e(TAG, "${it.status}, ${it.message} and ${it.data}")
                     showError()
-
                 }
             }
         }
@@ -126,7 +121,6 @@ class DetailActivity : AppCompatActivity() {
     private fun observerFavoriteStatus() {
         viewModel.isFavorite.observe(this) {
             updateFavoriteStatusUI(it)
-
         }
     }
 
@@ -135,7 +129,6 @@ class DetailActivity : AppCompatActivity() {
             binding.btnFavorite.setImageResource(R.drawable.ic_favorite_true)
         } else {
             binding.btnFavorite.setImageResource(R.drawable.ic_favorite_false)
-
         }
     }
 
@@ -153,7 +146,6 @@ class DetailActivity : AppCompatActivity() {
         binding.apply {
             btnToGithub.visibility = View.VISIBLE
             btnFavorite.visibility = View.VISIBLE
-
         }
 
         Picasso.get()
@@ -166,7 +158,6 @@ class DetailActivity : AppCompatActivity() {
     private fun showToastFavoriteStatus(isFavorite: Boolean) {
         if (isFavorite) {
             ToastTop.show(this, getString(R.string.added_to_favorite))
-
         } else {
             ToastTop.show(this, getString(R.string.removed_from_favorite))
         }
@@ -180,11 +171,9 @@ class DetailActivity : AppCompatActivity() {
         binding.incLoading.apply {
             root.visibility = if (showIt) {
                 parentShimmer.startShimmer()
-
                 View.VISIBLE
             } else {
                 parentShimmer.stopShimmer()
-
                 View.GONE
             }
         }
@@ -197,6 +186,4 @@ class DetailActivity : AppCompatActivity() {
             }
         }
     }
-
-
 }

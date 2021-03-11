@@ -24,7 +24,10 @@ import id.itborneo.ugithub.detail.DetailActivity.Companion.EXTRA_USER
 
 open class HomeFragment : Fragment() {
 
-    private val TAG = "HomeFragment"
+    companion object {
+        private const val TAG = "HomeFragment"
+    }
+
     private lateinit var adapter: HomeAdapter
     private lateinit var binding: FragmentHomeBinding
     private lateinit var listUser: List<UserModel>
@@ -98,7 +101,6 @@ open class HomeFragment : Fragment() {
                         it.data.toList().let { it1 -> adapter.set(it1) }
                     }
                     showLoading(false)
-
                 }
                 Status.LOADING -> {
                     showLoading(true)
@@ -108,11 +110,8 @@ open class HomeFragment : Fragment() {
                     Log.e(TAG, "${it.status}, ${it.message} and ${it.data}")
                     showError()
                     showLoading(false)
-
                 }
             }
-
-
         }
     }
 
@@ -126,13 +125,11 @@ open class HomeFragment : Fragment() {
     }
 
     private fun actionToDetail(userModel: UserModel) {
-
         val bundle = bundleOf(EXTRA_USER to userModel)
         navController.navigate(
             R.id.action_homeFragment_to_detailActivity,
             bundle
         )
-
     }
 
 

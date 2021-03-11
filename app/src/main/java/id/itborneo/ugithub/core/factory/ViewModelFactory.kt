@@ -12,7 +12,6 @@ class ViewModelFactory(
     private val repository: MainRepository
 ) : ViewModelProvider.NewInstanceFactory() {
 
-
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(DetailViewModel::class.java))
             return DetailViewModel(repository) as T

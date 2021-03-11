@@ -1,6 +1,5 @@
 package id.itborneo.ugithub.favorite
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,16 +10,12 @@ import id.itborneo.ugithub.databinding.ItemUserBinding
 
 class FavoriteAdapter(private val listener: (FavoriteModel) -> Unit) :
     RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
-    private val TAG = "PlacesAdapter"
 
     private var cities = listOf<FavoriteModel>()
-
     fun set(cities: List<FavoriteModel>) {
         this.cities = cities
-        Log.d(TAG, cities.toString())
         notifyDataSetChanged()
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =
@@ -51,8 +46,6 @@ class FavoriteAdapter(private val listener: (FavoriteModel) -> Unit) :
             }
         }
     }
-
-
 
 
 }

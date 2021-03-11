@@ -2,14 +2,12 @@ package id.itborneo.ugithub
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import id.itborneo.ugithub.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    private val TAG = "MainActivity"
     private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -18,7 +16,8 @@ class MainActivity : AppCompatActivity() {
         initBinding()
         initBottomNav()
     }
-    private fun initBinding(){
+
+    private fun initBinding() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         val view = binding.root
         setContentView(view)
@@ -29,6 +28,5 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
         val navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.bottomNav, navController)
-
     }
 }
