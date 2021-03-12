@@ -34,15 +34,16 @@
                 android:layout_height="400dp"
                 android:contentDescription="@string/image_user"
                 android:scaleType="centerCrop"
-                android:src="@color/grey"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
 
             <include
                 android:id="@+id/inc_loading"
                 layout="@layout/partial_loading_details_info"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toBottomOf="@id/iv_avatar" />
+                app:layout_constraintTop_toBottomOf="@id/iv_avatar"
+                tools:visibility="gone" />
 
             <include
                 android:id="@+id/inc_detail_info"
@@ -50,7 +51,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="invisible"
-                app:layout_constraintTop_toBottomOf="@id/iv_avatar" />
+                app:layout_constraintTop_toBottomOf="@id/iv_avatar"
+                tools:visibility="visible" />
 
             <Button
                 android:id="@+id/btnToGithub"

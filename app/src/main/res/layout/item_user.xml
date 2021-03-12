@@ -30,8 +30,8 @@
             android:clickable="false"
             android:contentDescription="@string/image_user"
             android:focusable="false"
-            tools:background="@android:color/holo_blue_dark"
-            tools:scaleType="centerCrop" />
+            tools:scaleType="centerCrop"
+            tools:src="@tools:sample/avatars" />
 
         <TextView
             android:id="@+id/tv_name"
@@ -39,7 +39,7 @@
             android:layout_gravity="center_horizontal"
             android:ellipsize="end"
             android:lines="1"
-            tools:text="Name Here" />
+            tools:text="@tools:sample/first_names" />
 
         <TextView
             android:id="@+id/tv_subtitle"
@@ -47,8 +47,7 @@
             android:layout_gravity="center_horizontal"
             android:ellipsize="end"
             android:lines="1"
-            tools:text="sub title here sub title here" />
-
+            tools:text="@tools:sample/full_names" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>
