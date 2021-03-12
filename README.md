@@ -14,7 +14,7 @@ Features
 - Shimmer Loading
 - Open Github Page User
 - Lottie Animation
-
+- About Me
 
 - Jetpack Navigation
 - Bottom Navigation
