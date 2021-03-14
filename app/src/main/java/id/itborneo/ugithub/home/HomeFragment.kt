@@ -69,23 +69,7 @@ open class HomeFragment : Fragment() {
                 override fun onQueryTextChange(newText: String?): Boolean {
                     if (!::listUser.isInitialized) return false
                     if (newText != null && newText.isNotEmpty()) {
-
-                        viewModel.query.postValue(newText)
                         viewModel.searchUsers(newText)
-//                        val newList = listUser.filter { user ->
-//                            user.login?.contains(newText, true) ?: false
-//                        }
-//                        adapter.set(newList)
-//
-//                        if (newList.isNullOrEmpty()) {
-//                            binding.iclEmpty.apply {
-//                                root.visibility = View.VISIBLE
-//                                tvTitle.text = requireContext().getString(R.string.user_not_found)
-//                            }
-//                        } else {
-//                            binding.iclEmpty.root.visibility = View.GONE
-//                        }
-
                     } else {
                         adapter.set(listUser)
                     }
@@ -128,23 +112,18 @@ open class HomeFragment : Fragment() {
                         listUser = it.data.items
                         it.data.items.toList().let { it1 -> adapter.set(it1) }
                     }
-                    showLoading(false)
+                    showNormal()
                 }
                 Status.LOADING -> {
                     showLoading(true)
                 }
                 Status.ERROR -> {
                     Log.e(TAG, "observerSearch ${it.status}, ${it.message} and ${it.data}")
-                        showError()
+                    showError()
                     showLoading(false)
                 }
             }
         }
-//        viewModel.query.observe(viewLifecycleOwner) {
-//            Log.d(TAG, "observerSearch $it")
-//
-//            viewModel.seachedUsers = viewModel.searchUsers()
-//        }
     }
 
     private fun initList() {
@@ -171,6 +150,13 @@ open class HomeFragment : Fragment() {
 
     private fun showError() {
         binding.incError.root.visibility = View.VISIBLE
+        binding.rvHome.visibility = View.GONE
+    }
+
+    private fun showNormal() {
+        binding.incError.root.visibility = View.GONE
+        binding.rvHome.visibility = View.VISIBLE
+        showLoading(false)
     }
 
     private fun showLoading(showIt: Boolean) {

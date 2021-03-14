@@ -34,16 +34,15 @@ class HomeAdapter(private val listener: (UserModel) -> Unit) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(user: UserModel) {
             itemBinding.apply {
+
                 tvName.text = user.login
                 tvSubtitle.text = user.htmlUrl?.removeRange(0, 8)
-
                 Picasso.get()
                     .load(user.avatarUrl)
                     .into(ivImage)
                 clItem.setOnClickListener {
                     listener(user)
                 }
-
             }
         }
     }

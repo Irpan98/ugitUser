@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.squareup.picasso.Picasso
+import es.dmoral.toasty.Toasty
 import id.itborneo.ugithub.R
 import id.itborneo.ugithub.core.enums.Status
 import id.itborneo.ugithub.core.factory.ViewModelFactory
@@ -18,7 +19,6 @@ import id.itborneo.ugithub.core.local.AppDatabase
 import id.itborneo.ugithub.core.model.UserDetailModel
 import id.itborneo.ugithub.core.model.UserModel
 import id.itborneo.ugithub.core.repository.MainRepository
-import id.itborneo.ugithub.core.utils.ToastTop
 import id.itborneo.ugithub.databinding.ActivityDetailBinding
 
 
@@ -46,13 +46,11 @@ class DetailActivity : AppCompatActivity() {
 
         initBinding()
         retrieveData()
-        initViewModelData()
         initToolbar()
         initTabLayout()
         buttonListener()
         observerDetailUser()
         observerFavoriteStatus()
-
     }
 
     private fun initToolbar() {
@@ -83,24 +81,11 @@ class DetailActivity : AppCompatActivity() {
         })
     }
 
-    private fun initViewModelData() {
-//        viewModel.userModel.let {
-////            viewModel.getDetailUser(it.login ?: "")
-////            viewModel.checkIsFavorite(it.id ?: 0)
-//        }
-    }
-
     private var getIntentData: UserModel? = null
 
     private fun retrieveData() {
         getIntentData = intent.extras?.getParcelable(EXTRA_USER)
-//        val getData = getIntentData
-//        if (getData != null) {
-//            viewModel.UserModel = getData
-//        } else {
-//            Log.e(TAG, "Something's Wrong with retrieveData")
-//            finish()
-//        }
+
     }
 
     private fun initBinding() {
@@ -197,9 +182,13 @@ class DetailActivity : AppCompatActivity() {
 
     private fun showToastFavoriteStatus(isFavorite: Boolean) {
         if (isFavorite) {
-            ToastTop.show(this, getString(R.string.added_to_favorite))
+            Toasty.normal(this, getString(R.string.added_to_favorite))
+                .show()
         } else {
-            ToastTop.show(this, getString(R.string.removed_from_favorite))
+            Toasty.normal(
+                this,
+                getString(R.string.removed_from_favorite),
+            ).show()
         }
     }
 
@@ -251,6 +240,7 @@ class DetailActivity : AppCompatActivity() {
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
         supportActionBar?.elevation = 0f
+
 
     }
 

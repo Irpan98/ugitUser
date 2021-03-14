@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import id.itborneo.ugithub.R
-import id.itborneo.ugithub.core.utils.ToastTop
 import id.itborneo.ugithub.databinding.FragmentAboutMeBinding
 
 
@@ -30,11 +30,13 @@ class AboutMeFragment : Fragment() {
 
     private fun initButtonListener() {
         binding.btnMe.setOnClickListener {
-            ToastTop.blueBackgroundShow(requireContext(), getString(R.string.in_development))
+            Toast.makeText(requireContext(), getString(R.string.in_development), Toast.LENGTH_SHORT)
+                .show()
         }
 
         binding.btnCredits.setOnClickListener {
-            ToastTop.blueBackgroundShow(requireContext(), getString(R.string.thanks_to))
+            Toast.makeText(requireContext(), getString(R.string.thanks_to), Toast.LENGTH_SHORT)
+                .show()
         }
     }
 

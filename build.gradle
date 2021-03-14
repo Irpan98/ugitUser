@@ -9,9 +9,8 @@ buildscript {
         material_version = "1.3.0"
         legacy_support_version = "1.0.0"
         junit_version = "4.13.2"
-        ext.androidx_junit_version = "1.1.2"
-        ext.espresso_version = "3.3.0"
-
+        androidx_junit_version = "1.1.2"
+        espresso_version = "3.3.0"
         retrofit_version = "2.9.0"
         okhttp_version = '4.9.0'
         nav_version = "2.3.4"
@@ -19,12 +18,11 @@ buildscript {
         picasso_version = "2.71828"
         lottie_version = "3.6.1"
         circleimageview_version = "3.1.0"
-        lifecycle_version = "1.1.1"
-        coroutines_version = "1.4.2"
-        livedata_version ="2.3.0"
+        coroutines_version = "1.4.3"
+        livedata_version = "2.3.0"
         lifecycle_version = "2.3.0"
-        shimmer_version="0.5.0"
-
+        shimmer_version = "0.5.0"
+        toasty_version = "1.5.0"
     }
 
     repositories {
@@ -34,6 +32,7 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:4.1.2"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
     }
 }
 
@@ -41,6 +40,8 @@ allprojects {
     repositories {
         google()
         jcenter()
+        maven { url "https://jitpack.io" }
+
     }
 }
 

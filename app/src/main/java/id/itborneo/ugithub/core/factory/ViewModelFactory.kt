@@ -12,8 +12,10 @@ import id.itborneo.ugithub.home.HomeViewModel
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory(
     private val repository: MainRepository,
-    private val any: Any? = null
-) : ViewModelProvider.NewInstanceFactory() {
+    private val any: Any? = null,
+    private val any2: Any? = null,
+
+    ) : ViewModelProvider.NewInstanceFactory() {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
         if (modelClass.isAssignableFrom(DetailViewModel::class.java))
@@ -23,7 +25,7 @@ class ViewModelFactory(
         if (modelClass.isAssignableFrom(HomeViewModel::class.java))
             return HomeViewModel(repository) as T
         if (modelClass.isAssignableFrom(ListInDetailViewModel::class.java))
-            return ListInDetailViewModel(repository) as T
+            return ListInDetailViewModel(repository, any as String, any2 as String) as T
         throw IllegalArgumentException()
     }
 

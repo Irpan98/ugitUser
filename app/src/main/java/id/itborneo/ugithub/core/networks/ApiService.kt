@@ -27,7 +27,6 @@ interface ApiService {
         @Query("q") query: String
     ): UserSearchResponse
 
-    //    https://api.github.com/users/mojombo/followers
     @GET("users/{user}/{type}")
     @Headers("Authorization: token ${BuildConfig.GITHUB_KEY}")
     suspend fun listUsersInDetail(

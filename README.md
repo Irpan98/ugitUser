@@ -14,8 +14,7 @@ Features
 - Get List From api
 - Search User from api
 - Get User Detail from api
-- Get User Followers from api
-- Get User Following from api
+- Get User Followers and Following from api
 - Shimmer Loading
 - Open Github Page User
 - Lottie Animation
@@ -35,3 +34,5 @@ Features
 - Coroutine
 - LiveData
 - LiveCycle
+- Updated dependencies
+- ViewModel Factory

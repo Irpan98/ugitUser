@@ -14,8 +14,6 @@ class HomeViewModel(private val repo: MainRepository) : ViewModel() {
     private val TAG = "HomeViewModel"
     var users: LiveData<Resource<List<UserModel>>> = users()
     var seachedUsers = MutableLiveData<Resource<UserSearchResponse>>()
-    var query = MutableLiveData("")
-
 
     private fun users() = liveData(Dispatchers.IO) {
 

@@ -43,7 +43,7 @@ class ListInDetailFragment : Fragment() {
     private var userModel: UserModel? = null
     private val viewModel: ListInDetailViewModel by viewModels {
         val dao = AppDatabase.getInstance(requireContext()).favoriteDao()
-        ViewModelFactory(MainRepository(dao))
+        ViewModelFactory(MainRepository(dao), userModel?.login, type)
     }
 
 
@@ -61,21 +61,13 @@ class ListInDetailFragment : Fragment() {
 
         initRecyclerview()
         retrieveData()
-        initViewModelData()
         observerData()
     }
-
-    private fun initViewModelData() {
-        viewModel.user = userModel?.login ?: ""
-        viewModel.type = type ?: ""
-        Log.d(TAG, "initViewModelData ${viewModel.type}")
-    }
-
 
     private fun retrieveData() {
         if (arguments != null) {
             userModel = arguments?.getParcelable(EXTRA_URL)
-            type = arguments?.getString(EXTRA_TYPE);
+            type = arguments?.getString(EXTRA_TYPE)
         }
     }
 
@@ -105,15 +97,12 @@ class ListInDetailFragment : Fragment() {
             when (it.status) {
                 Status.SUCCESS -> {
                     if (it.data != null) {
-//                        listUser = it.data
                         it.data.toList().let { it1 -> adapter.set(it1) }
-
                     }
                     showLoading(false)
                 }
                 Status.LOADING -> {
                     showLoading(true)
-//                    binding.incLoading.root.visibility = View.VISIBLE
                 }
                 Status.ERROR -> {
                     Log.e(TAG, "${it.status}, ${it.message} and ${it.data}")

@@ -84,15 +84,18 @@ dependencies {
     //circleimageview
     implementation "de.hdodenhof:circleimageview:$circleimageview_version"
 
-    //room
+    //Room
     implementation "androidx.room:room-runtime:$room_version"
     kapt "androidx.room:room-compiler:$room_version"
 
-    //lottie animation
+    //Lottie animation
     implementation "com.airbnb.android:lottie:$lottie_version"
 
-    //shimmer loading
+    //Shimmer loading
     implementation "com.facebook.shimmer:shimmer:$shimmer_version"
+
+    //Toasty
+    implementation "com.github.GrenderG:Toasty:$toasty_version"
 
 
 }

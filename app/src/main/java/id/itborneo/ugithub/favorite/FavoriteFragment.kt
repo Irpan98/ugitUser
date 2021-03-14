@@ -17,7 +17,6 @@ import id.itborneo.ugithub.core.model.UserModel
 import id.itborneo.ugithub.core.repository.MainRepository
 import id.itborneo.ugithub.core.utils.DataMapperModel
 import id.itborneo.ugithub.databinding.FragmentFavoriteBinding
-import id.itborneo.ugithub.detail.DemoCollectionAdapter
 import id.itborneo.ugithub.detail.DetailActivity
 
 class FavoriteFragment : Fragment() {
@@ -53,7 +52,6 @@ class FavoriteFragment : Fragment() {
 
         binding.rvFavorites.apply {
             layoutManager = GridLayoutManager(context, 2)
-
         }
         binding.rvFavorites.adapter = this.adapter
     }
@@ -61,12 +59,10 @@ class FavoriteFragment : Fragment() {
     private fun observerFavorite() {
         viewModel.favorites.observe(viewLifecycleOwner) {
             adapter.set(it)
-
             if (it.isEmpty()) {
                 emptyListUI(true)
             } else {
                 emptyListUI(false)
-
             }
         }
     }
@@ -89,10 +85,6 @@ class FavoriteFragment : Fragment() {
                 root.visibility = View.VISIBLE
                 tvTitle.text = getString(R.string.empty_list_favorite)
             }
-
         }
     }
-
-
-
 }
