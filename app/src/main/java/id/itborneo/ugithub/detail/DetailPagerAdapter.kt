@@ -5,7 +5,7 @@ import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import id.itborneo.ugithub.core.enums.UserType
 import id.itborneo.ugithub.core.model.UserModel
-import id.itborneo.ugithub.detail.followers.ChildDetailFragment
+import id.itborneo.ugithub.detail.list.ListInDetailFragment
 import java.util.*
 
 class DetailPagerAdapter(activity: AppCompatActivity, private val user: UserModel) :
@@ -13,12 +13,12 @@ class DetailPagerAdapter(activity: AppCompatActivity, private val user: UserMode
     override fun createFragment(position: Int): Fragment {
         var fragment: Fragment? = null
         when (position) {
-            0 -> fragment = ChildDetailFragment.newInstance(
+            0 -> fragment = ListInDetailFragment.newInstance(
                 user, UserType.FOLLOWERS.name.toLowerCase(
                     Locale.ROOT
                 )
             )
-            1 -> fragment = ChildDetailFragment.newInstance(
+            1 -> fragment = ListInDetailFragment.newInstance(
                 user, UserType.FOLLOWING.name.toLowerCase(
                     Locale.ROOT
                 )

@@ -1,4 +1,4 @@
-package id.itborneo.ugithub.detail.followers
+package id.itborneo.ugithub.detail.list
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +8,7 @@ import id.itborneo.ugithub.core.repository.MainRepository
 import id.itborneo.ugithub.core.utils.Resource
 import kotlinx.coroutines.Dispatchers
 
-class FollowersViewModel(private val repo: MainRepository) : ViewModel() {
+class ListInDetailViewModel(private val repo: MainRepository) : ViewModel() {
 
     private val TAG = "FollowersViewModel"
     var users: LiveData<Resource<List<UserModel>>> = listInDetail()

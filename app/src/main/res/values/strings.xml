@@ -11,21 +11,19 @@
     <string name="user_not_found">User Not Found in Our Data</string>
     <string name="thanks_to">Thanks To Hoai Le Lottie for animation</string>
     <string name="in_development">Feature in Development</string>
-    <string name="credits">Credits</string>
+    <string name="credits" translatable="false">Credits</string>
     <string name="contact_me">Contact Me</string>
     <string name="added_to_favorite">Added to Favorite</string>
     <string name="removed_from_favorite">Removed from Favorite</string>
     <string name="back">back</string>
     <string name="empty_list_favorite"> Favorites is Empty</string>
-    <string name="irpan">Irpan</string>
-    <string name="irpant1998_gmail_com">irpant1998@gmail.com</string>
+    <string name="irpan" translatable="false">Irpan</string>
+    <string name="irpant1998_gmail_com" translatable="false">irpant1998@gmail.com</string>
     <string name="error">Error, Please Try Again Later</string>
     <string name="favorite_button">favorite button</string>
-    <string name="github">Github</string>
+    <string name="github" translatable="false">Github</string>
     <string name="home">Home</string>
     <string name="favorite">Favorite</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

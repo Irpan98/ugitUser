@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import id.itborneo.ugithub.core.local.FavoriteModel
 import id.itborneo.ugithub.core.model.UserDetailModel
+import id.itborneo.ugithub.core.model.UserModel
 import id.itborneo.ugithub.core.repository.MainRepository
 import id.itborneo.ugithub.core.utils.DataMapperModel
 import id.itborneo.ugithub.core.utils.Resource
@@ -17,6 +18,7 @@ import kotlinx.coroutines.launch
 
 class DetailViewModel(private val repository: MainRepository) : ViewModel() {
 
+    lateinit var intentData: UserModel
     lateinit var detailUser: LiveData<Resource<UserDetailModel>>
     private var favorite: FavoriteModel? = null
 

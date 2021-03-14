@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,9 +13,16 @@
         android:layout_marginHorizontal="6dp"
         android:overScrollMode="never"
         android:paddingTop="@dimen/padding_layout"
-        android:paddingBottom="5dp"
-        tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        tools:listitem="@layout/item_user"
-        tools:spanCount="2" />
+        android:paddingBottom="@dimen/padding_layout_half"
+        tools:listitem="@layout/item_in_detail" />
 
-</LinearLayout>
+    <include
+        android:id="@+id/inc_error"
+        layout="@layout/partial_error"
+        android:visibility="gone" />
+
+    <include
+        android:id="@+id/inc_loading"
+        layout="@layout/partial_loading_detail_list"
+        android:visibility="gone" />
+</FrameLayout>

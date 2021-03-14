@@ -132,7 +132,6 @@ open class HomeFragment : Fragment() {
                 }
                 Status.LOADING -> {
                     showLoading(true)
-                    binding.incLoading.root.visibility = View.VISIBLE
                 }
                 Status.ERROR -> {
                     Log.e(TAG, "observerSearch ${it.status}, ${it.message} and ${it.data}")

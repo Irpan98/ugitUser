@@ -1,14 +1,14 @@
-package id.itborneo.ugithub.detail.followers
+package id.itborneo.ugithub.detail.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import id.itborneo.ugithub.core.model.UserModel
-import id.itborneo.ugithub.databinding.ItemUserBinding
+import id.itborneo.ugithub.databinding.ItemInDetailBinding
 
-class FollowersAdapter(private val listener: (UserModel) -> Unit) :
-    RecyclerView.Adapter<FollowersAdapter.ViewHolder>() {
+class ListInDetailAdapter(private val listener: (UserModel) -> Unit) :
+    RecyclerView.Adapter<ListInDetailAdapter.ViewHolder>() {
 
     private var cities = listOf<UserModel>()
     fun set(cities: List<UserModel>) {
@@ -19,7 +19,7 @@ class FollowersAdapter(private val listener: (UserModel) -> Unit) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =
-            ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemInDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(itemBinding)
     }
 
@@ -29,7 +29,7 @@ class FollowersAdapter(private val listener: (UserModel) -> Unit) :
 
     override fun getItemCount(): Int = cities.size
 
-    inner class ViewHolder(private val itemBinding: ItemUserBinding) :
+    inner class ViewHolder(private val itemBinding: ItemInDetailBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
         fun bind(user: UserModel) {
             itemBinding.apply {
