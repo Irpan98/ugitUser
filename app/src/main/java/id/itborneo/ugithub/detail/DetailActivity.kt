@@ -38,7 +38,7 @@ class DetailActivity : AppCompatActivity() {
     private lateinit var userDetail: UserDetailModel
     private val viewModel: DetailViewModel by viewModels {
         val dao = AppDatabase.getInstance(this).favoriteDao()
-        ViewModelFactory(MainRepository(dao))
+        ViewModelFactory(MainRepository(dao), getIntentData)
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,6 +52,7 @@ class DetailActivity : AppCompatActivity() {
         buttonListener()
         observerDetailUser()
         observerFavoriteStatus()
+
     }
 
     private fun initToolbar() {
@@ -83,20 +84,23 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun initViewModelData() {
-        viewModel.intentData.let {
-            viewModel.getDetailUser(it.login ?: "")
-            viewModel.checkIsFavorite(it.id ?: 0)
-        }
+//        viewModel.userModel.let {
+////            viewModel.getDetailUser(it.login ?: "")
+////            viewModel.checkIsFavorite(it.id ?: 0)
+//        }
     }
 
+    private var getIntentData: UserModel? = null
+
     private fun retrieveData() {
-        val getData = intent.extras?.getParcelable<UserModel>(EXTRA_USER)
-        if (getData != null) {
-            viewModel.intentData = getData
-        } else {
-            Log.e(TAG, "Something's Wrong with retrieveData")
-            finish()
-        }
+        getIntentData = intent.extras?.getParcelable(EXTRA_USER)
+//        val getData = getIntentData
+//        if (getData != null) {
+//            viewModel.UserModel = getData
+//        } else {
+//            Log.e(TAG, "Something's Wrong with retrieveData")
+//            finish()
+//        }
     }
 
     private fun initBinding() {
@@ -240,7 +244,7 @@ class DetailActivity : AppCompatActivity() {
 
 
     private fun initTabLayout() {
-        val user = viewModel.intentData
+        val user = viewModel.userModel
         val sectionsPagerAdapter = DetailPagerAdapter(this, user)
         binding.viewPager.adapter = sectionsPagerAdapter
         TabLayoutMediator(binding.tabs, binding.viewPager) { tab, position ->

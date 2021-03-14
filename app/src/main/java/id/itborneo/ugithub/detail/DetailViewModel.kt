@@ -16,9 +16,10 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
-class DetailViewModel(private val repository: MainRepository) : ViewModel() {
+class DetailViewModel(private val repository: MainRepository, val userModel: UserModel) :
+    ViewModel() {
 
-    lateinit var intentData: UserModel
+    //    lateinit var intentData: UserModel
     lateinit var detailUser: LiveData<Resource<UserDetailModel>>
     private var favorite: FavoriteModel? = null
 
@@ -29,11 +30,16 @@ class DetailViewModel(private val repository: MainRepository) : ViewModel() {
     private var isFromFavoriteFragment = false
     var isFavorite = MutableLiveData(false)
 
-    fun getDetailUser(username: String) {
+    init {
+        getDetailUser()
+        userModel.id?.let { checkIsFavorite(it) }
+    }
+
+    fun getDetailUser() {
         detailUser = liveData(Dispatchers.IO) {
             emit(Resource.loading(data = null))
             try {
-                emit(Resource.success(data = repository.getDetailUser(username)))
+                emit(Resource.success(data = repository.getDetailUser(userModel.login ?: "")))
             } catch (exception: Exception) {
                 emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
             }
@@ -73,5 +79,3 @@ class DetailViewModel(private val repository: MainRepository) : ViewModel() {
         }
     }
 }
-
-

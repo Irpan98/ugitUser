@@ -20,7 +20,9 @@ Features
 - Open Github Page User
 - Lottie Animation
 - About Me
-
+- support Landscape and Portrait
+- keep data even change orientation
+- support 2 language
 
 - Jetpack Navigation
 - Bottom Navigation
@@ -33,8 +35,3 @@ Features
 - Coroutine
 - LiveData
 - LiveCycle
-
-Next
-- support Landscape and Portrait
-- keep data even configuration changes
-- support 2 language
