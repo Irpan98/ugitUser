@@ -53,6 +53,7 @@ open class HomeFragment : Fragment() {
         initNav(view)
         initSearch()
         observerData()
+        observerSearch()
     }
 
     private fun initSearch() {
@@ -69,19 +70,21 @@ open class HomeFragment : Fragment() {
                     if (!::listUser.isInitialized) return false
                     if (newText != null && newText.isNotEmpty()) {
 
-                        val newList = listUser.filter { user ->
-                            user.login?.contains(newText, true) ?: false
-                        }
-                        adapter.set(newList)
-
-                        if (newList.isNullOrEmpty()) {
-                            binding.iclEmpty.apply {
-                                root.visibility = View.VISIBLE
-                                tvTitle.text = requireContext().getString(R.string.user_not_found)
-                            }
-                        } else {
-                            binding.iclEmpty.root.visibility = View.GONE
-                        }
+                        viewModel.query.postValue(newText)
+                        viewModel.searchUsers(newText)
+//                        val newList = listUser.filter { user ->
+//                            user.login?.contains(newText, true) ?: false
+//                        }
+//                        adapter.set(newList)
+//
+//                        if (newList.isNullOrEmpty()) {
+//                            binding.iclEmpty.apply {
+//                                root.visibility = View.VISIBLE
+//                                tvTitle.text = requireContext().getString(R.string.user_not_found)
+//                            }
+//                        } else {
+//                            binding.iclEmpty.root.visibility = View.GONE
+//                        }
 
                     } else {
                         adapter.set(listUser)
@@ -113,6 +116,36 @@ open class HomeFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun observerSearch() {
+        viewModel.seachedUsers.observe(viewLifecycleOwner) {
+            Log.d(TAG, "observerSearch ${it.status}, ${it.message} and ${it.data}")
+
+            when (it.status) {
+                Status.SUCCESS -> {
+                    if (it.data != null) {
+                        listUser = it.data.items
+                        it.data.items.toList().let { it1 -> adapter.set(it1) }
+                    }
+                    showLoading(false)
+                }
+                Status.LOADING -> {
+                    showLoading(true)
+                    binding.incLoading.root.visibility = View.VISIBLE
+                }
+                Status.ERROR -> {
+                    Log.e(TAG, "observerSearch ${it.status}, ${it.message} and ${it.data}")
+                        showError()
+                    showLoading(false)
+                }
+            }
+        }
+//        viewModel.query.observe(viewLifecycleOwner) {
+//            Log.d(TAG, "observerSearch $it")
+//
+//            viewModel.seachedUsers = viewModel.searchUsers()
+//        }
     }
 
     private fun initList() {

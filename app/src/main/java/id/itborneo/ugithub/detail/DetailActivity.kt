@@ -4,9 +4,14 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
+import android.view.MenuItem
 import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager2.widget.ViewPager2
+import com.google.android.material.appbar.AppBarLayout
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.squareup.picasso.Picasso
 import id.itborneo.ugithub.R
 import id.itborneo.ugithub.core.enums.Status
@@ -17,6 +22,7 @@ import id.itborneo.ugithub.core.model.UserModel
 import id.itborneo.ugithub.core.repository.MainRepository
 import id.itborneo.ugithub.core.utils.ToastTop
 import id.itborneo.ugithub.databinding.ActivityDetailBinding
+
 
 class DetailActivity : AppCompatActivity() {
 
@@ -39,9 +45,40 @@ class DetailActivity : AppCompatActivity() {
         initBinding()
         retrieveData()
         initViewModel()
+        initToolbar()
+        initTabLayout()
         buttonListener()
         observerDetailUser()
         observerFavoriteStatus()
+    }
+
+    private fun initToolbar() {
+        var isShow = false
+        val collapsingToolbarLayout = binding.collapsingToolbar
+        var scrollRange = -1
+//        collapsingToolbarLayout.setCollapsedTitleTextColor(R.color.white)
+//        collapsingToolbarLayout.setStatusBarScrimColor(resources.getColor(R.color.white))
+        binding.appbar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { barLayout, verticalOffset ->
+            if (scrollRange == -1) {
+                scrollRange = barLayout?.totalScrollRange!!
+            }
+            if (scrollRange + verticalOffset < 120) {
+                collapsingToolbarLayout.title = userDetail.name
+                isShow = true
+            } else if (isShow) {
+                collapsingToolbarLayout.title =
+                    " " //careful there should a space between double quote otherwise it wont work
+                isShow = false
+            }
+        })
+
+
+        setSupportActionBar(binding.toolbar)
+
+        val actionBar = supportActionBar
+        actionBar?.setDisplayHomeAsUpEnabled(true)
+
+
     }
 
     private fun initViewModel() {
@@ -82,9 +119,9 @@ class DetailActivity : AppCompatActivity() {
             startActivity(browserIntent)
         }
 
-        binding.ibBack.setOnClickListener {
-            finish()
-        }
+//        binding.ibBack.setOnClickListener {
+//            finish()
+//        }
     }
 
     private fun observerDetailUser() {
@@ -182,4 +219,40 @@ class DetailActivity : AppCompatActivity() {
             }
         }
     }
+
+    private val TAB_TITLES = arrayOf(
+        "Followers",
+        "Following"
+    )
+
+    private fun initTabLayout() {
+        val user = intentData
+        if (user != null) {
+            val sectionsPagerAdapter = DetailPagerAdapter(this, user)
+            val viewPager: ViewPager2 = findViewById(R.id.view_pager)
+            viewPager.adapter = sectionsPagerAdapter
+            val tabs: TabLayout = findViewById(R.id.tabs)
+            TabLayoutMediator(tabs, viewPager) { tab, position ->
+                tab.text = TAB_TITLES[position]
+            }.attach()
+            supportActionBar?.elevation = 0f
+        }
+
+    }
+//
+//    override fun onSupportNavigateUp(): Boolean {
+//        finish()
+//        return true
+//    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            android.R.id.home -> {
+                finish()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
 }

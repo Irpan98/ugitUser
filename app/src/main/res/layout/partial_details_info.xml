@@ -54,6 +54,7 @@
             tools:text="@tools:sample/us_zipcodes" />
 
         <TextView
+
             android:id="@+id/tvFollowing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

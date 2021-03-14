@@ -4,6 +4,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import id.itborneo.ugithub.core.repository.MainRepository
 import id.itborneo.ugithub.detail.DetailViewModel
+import id.itborneo.ugithub.detail.followers.FollowersViewModel
 import id.itborneo.ugithub.favorite.FavoriteViewModel
 import id.itborneo.ugithub.home.HomeViewModel
 
@@ -19,6 +20,8 @@ class ViewModelFactory(
             return FavoriteViewModel(repository) as T
         if (modelClass.isAssignableFrom(HomeViewModel::class.java))
             return HomeViewModel(repository) as T
+        if (modelClass.isAssignableFrom(FollowersViewModel::class.java))
+            return FollowersViewModel(repository) as T
         throw IllegalArgumentException()
     }
 

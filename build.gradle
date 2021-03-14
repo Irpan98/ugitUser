@@ -14,14 +14,15 @@ buildscript {
 
         retrofit_version = "2.9.0"
         okhttp_version = '4.9.0'
-        nav_version = "2.3.3"
+        nav_version = "2.3.4"
         room_version = "2.2.6"
         picasso_version = "2.71828"
         lottie_version = "3.6.1"
         circleimageview_version = "3.1.0"
         lifecycle_version = "1.1.1"
         coroutines_version = "1.4.2"
-        livedata ="2.3.0"
+        livedata_version ="2.3.0"
+        lifecycle_version = "2.3.0"
         shimmer_version="0.5.0"
 
     }

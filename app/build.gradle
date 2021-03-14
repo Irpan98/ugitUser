@@ -58,7 +58,10 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 
     //LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$livedata"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_version"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
     //Jetpack Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
