@@ -41,12 +41,13 @@
 
             <include
                 android:id="@+id/inc_loading"
-                layout="@layout/partial_loading"
+                layout="@layout/partial_loading_users"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:visibility="gone" />
+
             <include
-                android:id="@+id/icl_empty"
+                android:id="@+id/inc_empty"
                 layout="@layout/partial_empty"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -60,7 +61,9 @@
                 android:overScrollMode="never"
                 android:paddingTop="@dimen/padding_layout"
                 android:paddingBottom="5dp"
-                tools:listitem="@layout/item_user" />
+                tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                tools:listitem="@layout/item_user"
+                tools:spanCount="2" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

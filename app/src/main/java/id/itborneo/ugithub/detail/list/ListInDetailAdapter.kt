@@ -1,17 +1,17 @@
-package id.itborneo.ugithub.favorite
+package id.itborneo.ugithub.detail.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
-import id.itborneo.ugithub.core.local.FavoriteModel
-import id.itborneo.ugithub.databinding.ItemUserBinding
+import id.itborneo.ugithub.core.model.UserModel
+import id.itborneo.ugithub.databinding.ItemInDetailBinding
 
-class FavoriteAdapter(private val listener: (FavoriteModel) -> Unit) :
-    RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
+class ListInDetailAdapter(private val listener: (UserModel) -> Unit) :
+    RecyclerView.Adapter<ListInDetailAdapter.ViewHolder>() {
 
-    private var cities = listOf<FavoriteModel>()
-    fun set(cities: List<FavoriteModel>) {
+    private var cities = listOf<UserModel>()
+    fun set(cities: List<UserModel>) {
         this.cities = cities
 
         notifyDataSetChanged()
@@ -19,7 +19,7 @@ class FavoriteAdapter(private val listener: (FavoriteModel) -> Unit) :
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemBinding =
-            ItemUserBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            ItemInDetailBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(itemBinding)
     }
 
@@ -29,12 +29,12 @@ class FavoriteAdapter(private val listener: (FavoriteModel) -> Unit) :
 
     override fun getItemCount(): Int = cities.size
 
-    inner class ViewHolder(private val itemBinding: ItemUserBinding) :
+    inner class ViewHolder(private val itemBinding: ItemInDetailBinding) :
         RecyclerView.ViewHolder(itemBinding.root) {
-        fun bind(user: FavoriteModel) {
+        fun bind(user: UserModel) {
             itemBinding.apply {
                 tvName.text = user.login
-                tvSubtitle.text = user.htmlUrl.removeRange(0, 8)
+                tvSubtitle.text = user.htmlUrl?.removeRange(0, 8)
 
                 Picasso.get()
                     .load(user.avatarUrl)

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/background_second"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="@dimen/padding_layout">
@@ -15,14 +15,14 @@
         android:layout_height="wrap_content"
         android:textSize="20sp"
         android:textStyle="bold"
-        tools:text="Name" />
+        tools:text="@tools:sample/first_names" />
 
     <TextView
         android:id="@+id/tvUsername"
         style="@style/ItborneoText.TitleSecondary"
         android:paddingVertical="4dp"
         android:paddingTop="@dimen/padding_layout_half"
-        tools:text="username" />
+        tools:text="@tools:sample/full_names" />
 
     <TextView
         android:id="@+id/tvAddress"
@@ -30,7 +30,7 @@
         android:drawablePadding="8dp"
         android:paddingTop="@dimen/padding_layout_half"
         app:drawableLeftCompat="@drawable/ic_pin"
-        tools:text="address" />
+        tools:text="@tools:sample/lorem"  />
 
     <TextView
         android:id="@+id/tvWorkplace"
@@ -39,7 +39,7 @@
         android:gravity="center_vertical"
         android:paddingTop="@dimen/padding_layout_half"
         app:drawableLeftCompat="@drawable/ic_work"
-        tools:text="work place" />
+        tools:text="@tools:sample/lorem" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -52,15 +52,16 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            tools:text="11156" />
+            tools:text="@tools:sample/us_zipcodes" />
 
         <TextView
+
             android:id="@+id/tvFollowing"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            tools:text="11156" />
+            tools:text="@tools:sample/us_zipcodes"/>
 
         <TextView
             android:id="@+id/tvRepository"
@@ -68,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center_horizontal"
-            tools:text="11156" />
+            tools:text="@tools:sample/us_zipcodes"/>
 
     </LinearLayout>
 

@@ -15,7 +15,6 @@
         android:padding="@dimen/padding_layout">
 
         <TextView
-            android:id="@+id/tvName"
             style="@style/ItborneoText.TitleSecondary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -24,8 +23,6 @@
             android:textStyle="bold" />
 
         <TextView
-
-            android:id="@+id/tvUsername"
             style="@style/ItborneoText.TitleSecondary"
             android:layout_width="100dp"
             android:layout_marginTop="@dimen/padding_layout_half"
@@ -33,14 +30,12 @@
             android:paddingVertical="4dp" />
 
         <TextView
-            android:id="@+id/tvAddress"
             style="@style/ItborneoText.Text"
             android:layout_width="100dp"
             android:layout_marginTop="@dimen/padding_layout_half"
             android:background="@color/grey" />
 
         <TextView
-            android:id="@+id/tvWorkplace"
             style="@style/ItborneoText.Text"
             android:layout_width="100dp"
             android:layout_marginTop="@dimen/padding_layout_half"
@@ -54,7 +49,6 @@
             android:paddingTop="@dimen/padding_layout">
 
             <TextView
-                android:id="@+id/tvFollower"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/padding_layout"
@@ -63,7 +57,6 @@
                 android:gravity="center_horizontal" />
 
             <TextView
-                android:id="@+id/tvFollowing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/padding_layout"
@@ -71,7 +64,6 @@
                 android:background="@color/grey" />
 
             <TextView
-                android:id="@+id/tvRepository"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginHorizontal="@dimen/padding_layout"

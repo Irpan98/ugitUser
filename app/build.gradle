@@ -19,9 +19,15 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String" , "GITHUB_KEY" , '"b48e0b22dcfbc43d417c0d5b3bc83e9118900a5f"')
+
+
     }
 
     buildTypes {
+        debug
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -52,7 +58,10 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espresso_version"
 
     //LiveData
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$livedata"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$livedata_version"
+
+    // ViewModel
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
 
     //Jetpack Navigation
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
