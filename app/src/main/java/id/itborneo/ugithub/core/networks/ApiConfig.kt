@@ -26,5 +26,4 @@ object ApiConfig {
             .connectTimeout(20, TimeUnit.SECONDS)
             .readTimeout(20, TimeUnit.SECONDS)
             .build()
-
 }

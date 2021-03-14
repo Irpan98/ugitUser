@@ -8,7 +8,6 @@
     <string name="favorites">Favorites</string>
     <string name="find_user">Find Github User</string>
     <string name="list_is_empty">List is Empty</string>
-    <string name="user_not_found">User Not Found in Our Data</string>
     <string name="thanks_to">Thanks To Hoai Le Lottie for animation</string>
     <string name="in_development">Feature in Development</string>
     <string name="credits" translatable="false">Credits</string>

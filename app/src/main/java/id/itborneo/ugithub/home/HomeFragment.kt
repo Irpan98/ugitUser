@@ -103,7 +103,7 @@ open class HomeFragment : Fragment() {
     }
 
     private fun observerSearch() {
-        viewModel.seachedUsers.observe(viewLifecycleOwner) {
+        viewModel.usersSearched.observe(viewLifecycleOwner) {
             Log.d(TAG, "observerSearch ${it.status}, ${it.message} and ${it.data}")
 
             when (it.status) {

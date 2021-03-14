@@ -11,10 +11,12 @@ Features
     - Adding Favorite
     - Remove Favorite
     - List Favorites
-- Get List From api
-- Search User from api
-- Get User Detail from api
-- Get User Followers and Following from api
+- Get Data From API / Internet
+    - List 
+    - Search 
+    - User Detail   
+    - User Followers
+    - Following
 - Shimmer Loading
 - Open Github Page User
 - Lottie Animation

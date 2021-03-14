@@ -78,10 +78,10 @@ dependencies {
     //Picasso
     implementation "com.squareup.picasso:picasso:$picasso_version"
 
-    //livedata
+    //liveData
     implementation "android.arch.lifecycle:extensions:$lifecycle_version"
 
-    //circleimageview
+    //circle ImageView
     implementation "de.hdodenhof:circleimageview:$circleimageview_version"
 
     //Room

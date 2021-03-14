@@ -4,7 +4,6 @@
     style="@style/ItemTitle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_centerInParent="true"
     android:layout_gravity="center_horizontal"
     android:background="@color/background_main"
     android:gravity="center"

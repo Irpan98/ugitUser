@@ -4,7 +4,6 @@
     android:id="@+id/parent_shimmer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background_main"
     shimmer:duration="700"
     shimmer:shimmer_auto_start="true">
 
