@@ -30,6 +30,6 @@
         tools:layout="@layout/activity_detail" />
     <fragment
         android:id="@+id/aboutMeFragment"
-        android:name="id.itborneo.ugithub.aboutme.AboutMeFragment"
+        android:name="id.itborneo.ugithub.aboutme.SettingsFragment"
         android:label="AboutMeFragment" />
 </navigation>

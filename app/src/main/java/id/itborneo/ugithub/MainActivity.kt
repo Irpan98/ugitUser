@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
+import id.itborneo.ugithub.core.utils.KsPref
 import id.itborneo.ugithub.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -12,8 +13,13 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initSharedPreferences()
         initBinding()
         initBottomNav()
+    }
+
+    private fun initSharedPreferences() {
+        KsPref.instance(this)
     }
 
     private fun initBinding() {

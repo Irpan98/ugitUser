@@ -21,6 +21,13 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <receiver
+            android:name=".core.utils.AlarmReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
     </application>
+
 
 </manifest>
