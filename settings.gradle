@@ -1,2 +1,3 @@
+include ':ugitfavorite'
 include ':app'
 rootProject.name = "Ugithub"

@@ -1,5 +1,6 @@
 package id.itborneo.ugithub.core.local
 
+import android.database.Cursor
 import androidx.lifecycle.LiveData
 import androidx.room.*
 
@@ -17,4 +18,7 @@ interface FavoriteDao {
 
     @Delete
     fun removeFavorite(favorite: FavoriteModel)
+
+    @Query("SELECT * FROM favorite")
+    fun ContentProviderGetFavorites(): Cursor
 }

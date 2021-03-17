@@ -3,6 +3,7 @@
     package="id.itborneo.ugithub">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <permission android:name="id.itborneo.ugithub.READ_DATABASE" android:protectionLevel="normal"/>
 
     <application
         android:icon="@mipmap/ic_launcher"
@@ -27,6 +28,13 @@
             android:enabled="true"
             android:exported="true" />
 
+        <provider
+            android:name=".core.local.FavoriteContentProvider"
+            android:authorities="id.itborneo.ugithub"
+            android:readPermission="id.itborneo.ugithub.READ_DATABASE"
+            android:enabled="true"
+            android:exported="true">
+        </provider>
     </application>
 
 

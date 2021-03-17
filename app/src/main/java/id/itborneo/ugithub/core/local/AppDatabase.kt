@@ -16,6 +16,8 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
         private var INSTANCE: AppDatabase? = null
+        const  val TABLE_NAME = "db_favorite"
+
 
         fun getInstance(context: Context): AppDatabase {
             if (INSTANCE == null) {
@@ -23,7 +25,7 @@ abstract class AppDatabase : RoomDatabase() {
                     INSTANCE = Room.databaseBuilder(
                         context.applicationContext,
                         AppDatabase::class.java,
-                        "db_favorite"
+                        TABLE_NAME
                     ).build()
                 }
             }
