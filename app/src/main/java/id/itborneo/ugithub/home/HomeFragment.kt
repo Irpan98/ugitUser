@@ -168,5 +168,4 @@ open class HomeFragment : Fragment() {
             }
         }
     }
-
 }

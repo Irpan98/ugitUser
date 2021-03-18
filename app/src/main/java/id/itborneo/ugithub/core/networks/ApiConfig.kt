@@ -10,7 +10,6 @@ import java.util.concurrent.TimeUnit
 object ApiConfig {
 
     private const val BASE_URL = "https://api.github.com/"
-
     val apiService: ApiService = getRetrofit().create(ApiService::class.java)
 
     private fun getRetrofit(): Retrofit =

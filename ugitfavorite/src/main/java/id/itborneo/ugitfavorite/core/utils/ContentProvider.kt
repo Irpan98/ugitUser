@@ -24,7 +24,7 @@ object ContentProvider {
                 cursor.getString(cursor.getColumnIndexOrThrow(DatabaseConstant.LOCATION)),
             )
         } catch (e: Exception) {
-            Log.d("ContentProvider", "mapCursorToFavorite $e")
+            Log.e("ContentProvider", "mapCursorToFavorite $e")
         }
         cursor.moveToNext()
 

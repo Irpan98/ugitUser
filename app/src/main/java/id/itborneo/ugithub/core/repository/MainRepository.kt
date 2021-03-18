@@ -17,5 +17,4 @@ class MainRepository(private val dao: FavoriteDao) {
     fun geSingleFavorite(id: Int) = dao.getSingleFavorite(id)
     fun addFavorite(favorite: FavoriteModel) = dao.addFavorite(favorite)
     fun removeFavorite(favorite: FavoriteModel) = dao.removeFavorite(favorite)
-
 }

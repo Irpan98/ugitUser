@@ -12,12 +12,12 @@ import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import com.squareup.picasso.Picasso
 import id.itborneo.ugitfavorite.R
+import id.itborneo.ugitfavorite.core.enums.Status
+import id.itborneo.ugitfavorite.core.factory.ViewModelFactory
 import id.itborneo.ugitfavorite.core.model.UserDetailModel
 import id.itborneo.ugitfavorite.core.model.UserModel
-import id.itborneo.ugitfavorite.databinding.ActivityDetailBinding
-import id.itborneo.ugitfavorite.core.factory.ViewModelFactory
 import id.itborneo.ugitfavorite.core.repository.MainRepository
-import id.itborneo.ugitfavorite.core.enums.Status
+import id.itborneo.ugitfavorite.databinding.ActivityDetailBinding
 
 
 class DetailActivity : AppCompatActivity() {
@@ -34,6 +34,9 @@ class DetailActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityDetailBinding
     private lateinit var userDetail: UserDetailModel
+
+    private var getIntentData: UserModel? = null
+
     private val viewModel: DetailViewModel by viewModels {
         ViewModelFactory(MainRepository(), getIntentData)
     }
@@ -47,7 +50,6 @@ class DetailActivity : AppCompatActivity() {
         initTabLayout()
         buttonListener()
         observerDetailUser()
-//        observerFavoriteStatus()
     }
 
     private fun initToolbar() {
@@ -78,11 +80,9 @@ class DetailActivity : AppCompatActivity() {
         })
     }
 
-    private var getIntentData: UserModel? = null
 
     private fun retrieveData() {
         getIntentData = intent.extras?.getParcelable(EXTRA_USER)
-
     }
 
     private fun initBinding() {
@@ -92,19 +92,6 @@ class DetailActivity : AppCompatActivity() {
     }
 
     private fun buttonListener() {
-//        binding.btnFavorite.setOnClickListener {
-//            viewModel.apply {
-//                if (isFavorite.value == true) {
-//                    viewModel.removeFavorite()
-//                    showToastFavoriteStatus(false)
-//                } else {
-//                    if (!::userDetail.isInitialized) return@setOnClickListener
-//                    viewModel.addToFavorite(userDetail)
-//                    showToastFavoriteStatus(true)
-//                }
-//            }
-//        }
-
         binding.btnToGithub.setOnClickListener {
             val browserIntent = Intent(
                 Intent.ACTION_VIEW, Uri.parse(viewModel.detailUser.value?.data?.htmlUrl)
@@ -126,7 +113,6 @@ class DetailActivity : AppCompatActivity() {
                     } else {
                         showError()
                     }
-
                 }
                 Status.LOADING -> {
                     showLoading(true)
@@ -140,20 +126,6 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-//    private fun observerFavoriteStatus() {
-//        viewModel.isFavorite.observe(this) {
-//            updateFavoriteStatusUI(it)
-//        }
-//    }
-//
-//    private fun updateFavoriteStatusUI(isFavorite: Boolean) {
-//        if (isFavorite) {
-//            binding.btnFavorite.setImageResource(R.drawable.ic_favorite_true)
-//        } else {
-//            binding.btnFavorite.setImageResource(R.drawable.ic_favorite_false)
-//        }
-//    }
-
     private fun updateUI(userDetail: UserDetailModel?) {
         binding.incDetailInfo.apply {
             tvName.text = userDetail?.name ?: "N/A"
@@ -165,10 +137,9 @@ class DetailActivity : AppCompatActivity() {
             tvRepository.text = userDetail?.publicRepos.toString()
         }
 
-//        binding.apply {
-//            btnToGithub.visibility = View.VISIBLE
-//            btnFavorite.visibility = View.VISIBLE
-//        }
+        binding.apply {
+            btnToGithub.visibility = View.VISIBLE
+        }
 
         Picasso.get()
             .load(userDetail?.avatarUrl)
@@ -216,7 +187,6 @@ class DetailActivity : AppCompatActivity() {
         }
     }
 
-
     private fun initTabLayout() {
         val user = viewModel.userModel
         val sectionsPagerAdapter = DetailPagerAdapter(this, user)
@@ -225,8 +195,6 @@ class DetailActivity : AppCompatActivity() {
             tab.text = resources.getString(TAB_TITLES[position])
         }.attach()
         supportActionBar?.elevation = 0f
-
-
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

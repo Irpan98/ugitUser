@@ -4,9 +4,7 @@ import android.content.Intent
 import android.database.Cursor
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import android.view.View
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
@@ -25,29 +23,18 @@ import id.itborneo.ugitfavorite.databinding.ActivityMainBinding
 import id.itborneo.ugitfavorite.detail.DetailActivity
 
 class MainActivity : AppCompatActivity() {
-//
-//    companion object {
-//        const val AUTHORITY = "id.itborneo.ugithub"
-//        const val SCHEME = "content"
-//        const val TABLE_NAME = "db_favorite"
-//        const val FAVORITE = 1
-//    }
+
 
     private lateinit var adapter: MainAdapter
     private lateinit var binding: ActivityMainBinding
-//    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         initBinding()
         initRecycler()
-//        initNav(view)
-        observerFavorite()
         initContentProvider()
     }
-
-    private val viewModel: MainViewModel by viewModels()
 
     private fun initBinding() {
         binding = ActivityMainBinding.inflate(layoutInflater)
@@ -59,7 +46,6 @@ class MainActivity : AppCompatActivity() {
         LoaderManager.getInstance(this).initLoader(FAVORITE, null, mLoaderCallbacks)
     }
 
-
     private fun initRecycler() {
         adapter = MainAdapter {
             actionToDetail(DataMapperModel.singleFavoriteToUser(it))
@@ -69,17 +55,6 @@ class MainActivity : AppCompatActivity() {
             layoutManager = GridLayoutManager(context, 2)
         }
         binding.rvFavorites.adapter = this.adapter
-    }
-
-    private fun observerFavorite() {
-//        viewModel.favorites.observe(this) {
-//            adapter.set(it)
-//            if (it.isEmpty()) {
-//                emptyListUI(true)
-//            } else {
-//                emptyListUI(false)
-//            }
-//        }
     }
 
     private fun actionToDetail(user: UserModel) {
@@ -97,7 +72,6 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-
     private val mLoaderCallbacks = object : LoaderManager.LoaderCallbacks<Cursor> {
         lateinit var dataCursor: Cursor
 
@@ -113,15 +87,12 @@ class MainActivity : AppCompatActivity() {
         override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
             when (loader.id) {
                 FAVORITE -> dataCursor = data as Cursor
+                else -> throw IllegalArgumentException("Main Activity: Unknown loader id")
             }
-
             dataCursor.moveToFirst()
             val favoriteUsers = mutableListOf<FavoriteModel>()
             while (!dataCursor.isAfterLast) {
-                Log.d("MainActivity", "onLoadFinished : position ${dataCursor.position}")
-
                 val fav = mapCursorToFavorite(dataCursor)
-                Log.d("MainActivity", "onLoadFinished called $fav")
                 if (fav != null) {
                     favoriteUsers.add(fav)
                 }

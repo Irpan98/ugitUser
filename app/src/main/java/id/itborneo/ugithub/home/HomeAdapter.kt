@@ -46,6 +46,4 @@ class HomeAdapter(private val listener: (UserModel) -> Unit) :
             }
         }
     }
-
-
 }

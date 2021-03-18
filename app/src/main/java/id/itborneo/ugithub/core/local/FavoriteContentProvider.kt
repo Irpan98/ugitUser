@@ -5,11 +5,9 @@ import android.content.ContentValues
 import android.content.UriMatcher
 import android.database.Cursor
 import android.net.Uri
-import android.util.Log
 import androidx.room.RoomMasterTable.TABLE_NAME
 import id.itborneo.ugithub.core.local.DatabaseConstant.AUTHORITY
 import id.itborneo.ugithub.core.local.DatabaseConstant.FAVORITE
-import id.itborneo.ugithub.core.utils.ContentProvider.mapCursorToFavorite
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
@@ -41,22 +39,11 @@ class FavoriteContentProvider : ContentProvider() {
                 getQueryFavorite()
             }
         }
-
     }
 
     private fun getQueryFavorite(): Cursor {
-        val cursor = favoriteDao.ContentProviderGetFavorites()
+        val cursor = favoriteDao.contentProviderGetFavorites()
         cursor.moveToFirst()
-
-//        while (!cursor.isAfterLast) {
-////            Log.d(
-////                "favContentProvider",
-////                "onLoadFinished : position ${cursor.position}"
-////            )
-//
-////            val fav = mapCursorToFavorite(cursor)
-////            Log.d("favContentProvider", "onLoadFinished called $fav")
-//        }
         return cursor
     }
 

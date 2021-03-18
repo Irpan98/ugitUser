@@ -13,7 +13,6 @@ class ListInDetailAdapter(private val listener: (UserModel) -> Unit) :
     private var cities = listOf<UserModel>()
     fun set(cities: List<UserModel>) {
         this.cities = cities
-
         notifyDataSetChanged()
     }
 

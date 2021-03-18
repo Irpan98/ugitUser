@@ -13,7 +13,6 @@ class FavoriteAdapter(private val listener: (FavoriteModel) -> Unit) :
     private var cities = listOf<FavoriteModel>()
     fun set(cities: List<FavoriteModel>) {
         this.cities = cities
-
         notifyDataSetChanged()
     }
 
@@ -46,6 +45,4 @@ class FavoriteAdapter(private val listener: (FavoriteModel) -> Unit) :
             }
         }
     }
-
-
 }

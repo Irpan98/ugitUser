@@ -3,11 +3,9 @@ package id.itborneo.ugithub.core.local
 object DatabaseConstant {
 
     const val AUTHORITY = "id.itborneo.ugithub"
-    const val SCHEME = "content"
     const val FAVORITE = 1
 
     const val TABLE_NAME = "db_favorite"
-
 
     const val ID = "id"
     const val LOGIN = "login"

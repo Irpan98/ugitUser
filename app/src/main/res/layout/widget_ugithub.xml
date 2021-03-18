@@ -9,26 +9,27 @@
         android:orientation="vertical"
         android:weightSum="10">
 
-        <StackView
-            android:id="@+id/stack_view"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="9"
-            android:loopViews="true" />
-
         <TextView
             android:id="@+id/banner_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="1"
-            android:padding="8dp"
-            android:background="@color/black"
-            android:text="@string/appwidget_text"
+            android:background="@color/blue_main"
+            android:lines="1"
+            android:padding="@dimen/padding_layout_half"
+            android:text="@string/app_name"
             android:textAlignment="center"
             android:textColor="@color/white"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <StackView
+            android:id="@+id/stack_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:loopViews="true" />
+
+
     </LinearLayout>
 
     <TextView
@@ -36,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:background="@color/black"
+        android:background="@color/blue_main"
         android:text="@string/empty_list_favorite"
         android:textAlignment="center"
         android:textColor="@color/white"

@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">Ugithub</string>
     <string name="image_user">Gambar User Github</string>
-    <string name="me">Tentang Saya</string>
+    <string name="settings">Pengaturan</string>
     <string name="followers">Pengikut</string>
     <string name="following">Mengikuti</string>
     <string name="repositories">repositori</string>
@@ -12,12 +12,20 @@
     <string name="thanks_to">Terima Kasih Hoai Le Lottie for animation</string>
     <string name="in_development">Fitur Sedang Pengembangan</string>
     <string name="contact_me">Hubungi Saya</string>
-    <string name="added_to_favorite">Ditambahkan ke Favorit</string>
+    <string name="added_to_favorite">Berhasil ditambahkan ke Favorit</string>
     <string name="removed_from_favorite">Dihapus dari Favorit</string>
     <string name="back">Kembali</string>
-    <string name="empty_list_favorite">Favorit Kosong</string>
+    <string name="empty_list_favorite">Tidak ada User Favorit</string>
     <string name="error">Terjadi Kesalahan, Coba lagi nanti</string>
     <string name="favorite_button">Tombol Favorit</string>
     <string name="home">Beranda</string>
     <string name="favorite">Favorit</string>
+    <string name="languange">Bahasa</string>
+    <string name="daily_reminder">Pengingat Harian</string>
+    <string name="info_daily">Pengingat untuk membuka Aplikasi</string>
+    <string name="daily_reminder_success">Berhasil Menambahkan Pengingat Harian</string>
+    <string name="daily_reminder_removed"> Menghapus Pengingat Harian</string>
+    <string name="add_widget">Add widget</string>
+    <string name="lets_find_github_users">Ayo temukan Pengguna Github Populer</string>
+    <string name="widget_image">gambar image</string>
 </resources>

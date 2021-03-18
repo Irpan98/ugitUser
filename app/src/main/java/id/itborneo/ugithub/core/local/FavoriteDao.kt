@@ -20,7 +20,7 @@ interface FavoriteDao {
     fun removeFavorite(favorite: FavoriteModel)
 
     @Query("SELECT * FROM favorite")
-    fun ContentProviderGetFavorites(): Cursor
+    fun contentProviderGetFavorites(): Cursor
 
     @Query("SELECT * FROM favorite")
     fun getFavoritesWidget(): List<FavoriteModel>

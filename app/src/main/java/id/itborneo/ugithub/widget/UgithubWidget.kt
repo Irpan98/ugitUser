@@ -1,22 +1,15 @@
 package id.itborneo.ugithub.widget
 
-import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
 import android.appwidget.AppWidgetProvider
 import android.content.Context
 import android.content.Intent
 import android.widget.RemoteViews
-import android.widget.Toast
 import androidx.core.net.toUri
 import id.itborneo.ugithub.R
 
-/**
- * Implementation of App Widget functionality.
- */
 class UgithubWidget : AppWidgetProvider() {
     companion object {
-        private const val TOAST_ACTION = "id.itborneo.ugithub.TOAST_ACTION"
-        const val EXTRA_ITEM = "id.itborneo.ugithub.EXTRA_ITEM"
 
         private fun updateAppWidget(
             context: Context,
@@ -26,31 +19,11 @@ class UgithubWidget : AppWidgetProvider() {
             val intent = Intent(context, UgithubWidgetService::class.java)
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
             intent.data = intent.toUri(Intent.URI_INTENT_SCHEME).toUri()
-            val views = RemoteViews(context.packageName, R.layout.ugithub_widget)
+            val views = RemoteViews(context.packageName, R.layout.widget_ugithub)
             views.setRemoteAdapter(R.id.stack_view, intent)
             views.setEmptyView(R.id.stack_view, R.id.empty_view)
-            val toastIntent = Intent(context, UgithubWidget::class.java)
-            toastIntent.action = TOAST_ACTION
-            toastIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
-            intent.data = intent.toUri(Intent.URI_INTENT_SCHEME).toUri()
-            val toastPendingIntent = PendingIntent.getBroadcast(
-                context,
-                0,
-                toastIntent,
-                PendingIntent.FLAG_UPDATE_CURRENT
-            )
-            views.setPendingIntentTemplate(R.id.stack_view, toastPendingIntent)
-            appWidgetManager.updateAppWidget(appWidgetId, views)
-        }
-    }
 
-    override fun onReceive(context: Context?, intent: Intent?) {
-        super.onReceive(context, intent)
-        if (intent?.action != null) {
-            if (intent.action == TOAST_ACTION) {
-                val viewIndex = intent.getIntExtra(EXTRA_ITEM, 0)
-                Toast.makeText(context, "Touched view $viewIndex", Toast.LENGTH_SHORT).show()
-            }
+            appWidgetManager.updateAppWidget(appWidgetId, views)
         }
     }
 
@@ -59,7 +32,6 @@ class UgithubWidget : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
-
         for (appWidgetId in appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId)
         }
@@ -68,4 +40,5 @@ class UgithubWidget : AppWidgetProvider() {
     override fun onEnabled(context: Context) {}
 
     override fun onDisabled(context: Context) {}
+
 }

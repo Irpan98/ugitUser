@@ -32,8 +32,6 @@ interface ApiService {
     suspend fun listUsersInDetail(
         @Path("user") user: String,
         @Path("type") type: String
-
     ): List<UserModel>
-
 }
 

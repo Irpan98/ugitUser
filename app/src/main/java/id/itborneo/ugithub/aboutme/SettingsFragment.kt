@@ -18,11 +18,10 @@ import java.util.*
 class SettingsFragment : Fragment() {
 
     private lateinit var binding: FragmentSettingsBinding
-
     private val alarmReceiver = AlarmReceiver()
 
     companion object {
-        private const val ALARM_TIME = "09:00"
+        private const val ALARM_TIME = "9:00"
     }
 
     override fun onCreateView(
@@ -37,10 +36,13 @@ class SettingsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initButtonListener()
-        binding.tvLanguage.text = getLanguage()
-
+        updateUI()
         initButtonListener()
         initSwitchListener()
+    }
+
+    private fun updateUI() {
+        binding.tvLanguage.text = getLanguage()
     }
 
     private fun setAlarm(activeIt: Boolean) {
@@ -49,7 +51,6 @@ class SettingsFragment : Fragment() {
         } else {
             removeDailyReminder()
         }
-
     }
 
     private fun setDailyReminder() {
@@ -68,7 +69,6 @@ class SettingsFragment : Fragment() {
     }
 
     private fun removeDailyReminder() {
-
         alarmReceiver.cancelAlarm(
             requireContext(),
             AlarmReceiver.TYPE_REPEATING
@@ -100,5 +100,6 @@ class SettingsFragment : Fragment() {
     }
 
     private fun getLanguage() = Locale.getDefault().displayLanguage
+
 }
 
