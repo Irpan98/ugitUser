@@ -18,11 +18,11 @@
 
     <include
         android:id="@+id/inc_error"
-        layout="@layout/partial_error"
+        layout="@layout/partial_error_fav"
         android:visibility="gone" />
 
     <include
         android:id="@+id/inc_loading"
-        layout="@layout/partial_loading_detail_list"
+        layout="@layout/partial_loading_detail_list_favorite"
         android:visibility="gone" />
 </FrameLayout>

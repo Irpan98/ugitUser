@@ -7,7 +7,6 @@ object DatabaseConstant {
 
     const val TABLE_NAME = "db_favorite"
 
-    const val ID = "id"
     const val LOGIN = "login"
     const val COMPANY = "company"
     const val PUBLIC_REPOS = "publicRepos"

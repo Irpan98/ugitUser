@@ -23,7 +23,6 @@ class AlarmReceiver : BroadcastReceiver() {
         private const val ID_ONETIME = 100
         private const val ID_REPEATING = 101
 
-        private const val DATE_FORMAT = "yyyy-MM-dd"
         private const val TIME_FORMAT = "HH:mm"
 
     }
@@ -32,11 +31,11 @@ class AlarmReceiver : BroadcastReceiver() {
         val type = intent.getStringExtra(EXTRA_TYPE)
         val message = intent.getStringExtra(EXTRA_MESSAGE)
 
-        val notifId = if (type.equals(TYPE_REPEATING, true)) ID_ONETIME else ID_REPEATING
+        val notifyId = if (type.equals(TYPE_REPEATING, true)) ID_ONETIME else ID_REPEATING
 
 
         if (message != null) {
-            Notification.showDailyReminder(context, message, notifId)
+            Notification.showDailyReminder(context, message, notifyId)
         }
     }
 
@@ -62,7 +61,7 @@ class AlarmReceiver : BroadcastReceiver() {
     ) {
 
         if (isDateInvalid(time, TIME_FORMAT)) return
-        val alarmmanager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
         intent.putExtra(EXTRA_MESSAGE, message)
         intent.putExtra(EXTRA_TYPE, type)
@@ -78,7 +77,7 @@ class AlarmReceiver : BroadcastReceiver() {
 
         val pendingIntent = PendingIntent.getBroadcast(context, ID_REPEATING, intent, 0)
 
-        alarmmanager.setInexactRepeating(
+        alarmManager.setInexactRepeating(
             AlarmManager.RTC_WAKEUP,
             calendar.timeInMillis,
             AlarmManager.INTERVAL_DAY,

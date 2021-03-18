@@ -38,7 +38,7 @@
 
                 <include
                     android:id="@+id/inc_loading"
-                    layout="@layout/partial_loading_details_info"
+                    layout="@layout/partial_loading_details_info_fav"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:layout_constraintTop_toBottomOf="@id/iv_avatar"
@@ -46,7 +46,7 @@
 
                 <include
                     android:id="@+id/inc_detail_info"
-                    layout="@layout/partial_details_info"
+                    layout="@layout/partial_details_info_favorite"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:visibility="invisible"
@@ -100,7 +100,7 @@
 
     <include
         android:id="@+id/inc_error"
-        layout="@layout/partial_error"
+        layout="@layout/partial_error_fav"
         android:visibility="gone"
         app:layout_anchor="@+id/appbar"
         app:layout_anchorGravity="center" />

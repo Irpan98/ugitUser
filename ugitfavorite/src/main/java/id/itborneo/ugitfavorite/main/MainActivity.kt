@@ -76,10 +76,10 @@ class MainActivity : AppCompatActivity() {
         lateinit var dataCursor: Cursor
 
         override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-            val URI: Uri = Uri.parse("$SCHEME://$AUTHORITY/$TABLE_NAME")
+            val uri: Uri = Uri.parse("$SCHEME://$AUTHORITY/$TABLE_NAME")
 
             return when (id) {
-                FAVORITE -> CursorLoader(applicationContext, URI, null, null, null, null)
+                FAVORITE -> CursorLoader(applicationContext, uri, null, null, null, null)
                 else -> throw IllegalArgumentException("Main Activity: Unknown URI")
             }
         }

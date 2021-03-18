@@ -13,7 +13,7 @@ object KsPref {
     }
 
 
-    private val DAILY_REMINDER = "daily_reminder_key"
+    private const val DAILY_REMINDER = "daily_reminder_key"
     fun setDailyReminder() {
 
         val isActive = prefs.pull(DAILY_REMINDER, false)

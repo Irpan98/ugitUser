@@ -93,13 +93,12 @@ class SettingsFragment : Fragment() {
     }
 
     private fun initButtonListener() {
-        binding.llSetLanguange.setOnClickListener {
+        binding.llSetLanguage.setOnClickListener {
             val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
             startActivity(mIntent)
         }
     }
 
     private fun getLanguage() = Locale.getDefault().displayLanguage
-
 }
 

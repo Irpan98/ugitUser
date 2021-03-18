@@ -23,7 +23,7 @@
     <string name="home">Home</string>
     <string name="favorite">Favorite</string>
     <string name="settings">Settings</string>
-    <string name="languange">Languange</string>
+    <string name="language">Language</string>
     <string name="daily_reminder">Daily Reminder</string>
     <string name="info_daily">Reminder for return to the app</string>
     <string name="ch_daily_reminder" translatable="false">channel_daily_reminder</string>
