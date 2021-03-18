@@ -12,22 +12,26 @@ import androidx.loader.app.LoaderManager
 import androidx.loader.content.CursorLoader
 import androidx.loader.content.Loader
 import androidx.recyclerview.widget.GridLayoutManager
-import id.itborneo.ugitfavorite.core.utils.ContentProvider.mapCursorToFavorite
-import id.itborneo.ugitfavorite.core.model.FavoriteModel
 import id.itborneo.ugitfavorite.R
+import id.itborneo.ugitfavorite.core.model.FavoriteModel
 import id.itborneo.ugitfavorite.core.model.UserModel
+import id.itborneo.ugitfavorite.core.utils.ContentProvider.mapCursorToFavorite
+import id.itborneo.ugitfavorite.core.utils.DataMapperModel
+import id.itborneo.ugitfavorite.core.utils.DatabaseConstant.AUTHORITY
+import id.itborneo.ugitfavorite.core.utils.DatabaseConstant.FAVORITE
+import id.itborneo.ugitfavorite.core.utils.DatabaseConstant.SCHEME
+import id.itborneo.ugitfavorite.core.utils.DatabaseConstant.TABLE_NAME
 import id.itborneo.ugitfavorite.databinding.ActivityMainBinding
 import id.itborneo.ugitfavorite.detail.DetailActivity
-import id.itborneo.ugitfavorite.core.utils.DataMapperModel
 
 class MainActivity : AppCompatActivity() {
-
-    companion object {
-        const val AUTHORITY = "id.itborneo.ugithub"
-        const val SCHEME = "content"
-        const val TABLE_NAME = "db_favorite"
-        const val FAVORITE = 1
-    }
+//
+//    companion object {
+//        const val AUTHORITY = "id.itborneo.ugithub"
+//        const val SCHEME = "content"
+//        const val TABLE_NAME = "db_favorite"
+//        const val FAVORITE = 1
+//    }
 
     private lateinit var adapter: MainAdapter
     private lateinit var binding: ActivityMainBinding
@@ -93,12 +97,13 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    val URI: Uri = Uri.parse("$SCHEME://$AUTHORITY/$TABLE_NAME")
-
-    lateinit var dataCursor: Cursor
 
     private val mLoaderCallbacks = object : LoaderManager.LoaderCallbacks<Cursor> {
+        lateinit var dataCursor: Cursor
+
         override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
+            val URI: Uri = Uri.parse("$SCHEME://$AUTHORITY/$TABLE_NAME")
+
             return when (id) {
                 FAVORITE -> CursorLoader(applicationContext, URI, null, null, null, null)
                 else -> throw IllegalArgumentException("Main Activity: Unknown URI")
@@ -108,7 +113,6 @@ class MainActivity : AppCompatActivity() {
         override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
             when (loader.id) {
                 FAVORITE -> dataCursor = data as Cursor
-
             }
 
             dataCursor.moveToFirst()
@@ -132,7 +136,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         override fun onLoaderReset(loader: Loader<Cursor>) {
-            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
         }
     }
 }

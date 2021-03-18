@@ -1,4 +1,4 @@
-package id.itborneo.ugitfavorite.networks
+package id.itborneo.ugitfavorite.core.networks
 
 import id.itborneo.ugitfavorite.BuildConfig
 import id.itborneo.ugitfavorite.core.model.UserDetailModel

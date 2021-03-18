@@ -12,19 +12,12 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initSharedPreferences()
         initBinding()
         initBottomNav()
-//        initContentProvider()
     }
-
-//    private fun initContentProvider() {
-//        supportLoaderManager.initLoader(FAVORITE, null, mLoaderCallbacks)
-//    }
 
     private fun initSharedPreferences() {
         KsPref.instance(this)
@@ -42,46 +35,4 @@ class MainActivity : AppCompatActivity() {
         val navController = navHostFragment.navController
         NavigationUI.setupWithNavController(binding.bottomNav, navController)
     }
-
-//    val URI: Uri = Uri.parse("$SCHEME://$AUTHORITY/$TABLE_NAME")
-//
-//    lateinit var dataCursor: Cursor
-//
-//    private val mLoaderCallbacks = object : LoaderManager.LoaderCallbacks<Cursor> {
-//        override fun onCreateLoader(id: Int, args: Bundle?): Loader<Cursor> {
-//            return when (id) {
-//                FAVORITE -> CursorLoader(applicationContext, URI, null, null, null, null)
-//                else -> throw IllegalArgumentException("Main Activity: Unknown URI")
-//            }
-//
-//        }
-//
-//        override fun onLoadFinished(loader: Loader<Cursor>, data: Cursor?) {
-//            when (loader.id) {
-//                FAVORITE -> dataCursor = data as Cursor
-//
-//            }
-//
-//            dataCursor.moveToFirst()
-//            while (!dataCursor.isAfterLast) {
-//                Log.d("MainActivity", "onLoadFinished : position ${dataCursor.position}")
-//
-//                val fav = mapCursorToFavorite(dataCursor)
-//                Log.d("MainActivity", "onLoadFinished called $fav")
-//            }
-//
-//
-////            while (dataCursor.moveToNext()){
-//
-//
-////            }
-//
-//
-//        }
-//
-//        override fun onLoaderReset(loader: Loader<Cursor>) {
-//            TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-//        }
-//
-//    }
 }

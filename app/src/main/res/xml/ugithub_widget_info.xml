@@ -4,7 +4,6 @@
     android:initialLayout="@layout/ugithub_widget"
     android:minWidth="250dp"
     android:minHeight="110dp"
-    android:previewImage="@drawable/ic_github_white"
-    android:resizeMode="horizontal|vertical"
+    android:previewImage="@drawable/falcon"
     android:updatePeriodMillis="0"
     android:widgetCategory="home_screen" />

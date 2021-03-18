@@ -34,6 +34,7 @@
     <string name="daily_reminder_removed">Daily Reminder has Removed</string>
     <string name="appwidget_text">EXAMPLE</string>
     <string name="add_widget">Add widget</string>
+    <string name="lets_find_github_users">Lets find new popular Github User</string>
 
 
 </resources>

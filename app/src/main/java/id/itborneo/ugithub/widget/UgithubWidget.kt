@@ -23,7 +23,7 @@ class UgithubWidget : AppWidgetProvider() {
             appWidgetManager: AppWidgetManager,
             appWidgetId: Int
         ) {
-            val intent = Intent(context, UgithubWidget::class.java)
+            val intent = Intent(context, UgithubWidgetService::class.java)
             intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
             intent.data = intent.toUri(Intent.URI_INTENT_SCHEME).toUri()
             val views = RemoteViews(context.packageName, R.layout.ugithub_widget)

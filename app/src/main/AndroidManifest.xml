@@ -3,7 +3,6 @@
     package="id.itborneo.ugithub">
 
     <uses-permission android:name="android.permission.INTERNET" />
-
     <permission
         android:name="id.itborneo.ugithub.READ_DATABASE"
         android:protectionLevel="normal" />
@@ -14,6 +13,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ugithub">
+        <activity android:name=".main.MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".detail.DetailActivity" />
+
         <receiver android:name=".widget.UgithubWidget">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
@@ -24,14 +32,10 @@
                 android:resource="@xml/ugithub_widget_info" />
         </receiver>
 
-        <activity android:name=".detail.DetailActivity" />
-        <activity android:name=".main.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <service
+            android:name=".widget.UgithubWidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
 
         <meta-data
             android:name="preloaded_fonts"

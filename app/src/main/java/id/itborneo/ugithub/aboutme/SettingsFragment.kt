@@ -19,6 +19,8 @@ class SettingsFragment : Fragment() {
 
     private lateinit var binding: FragmentSettingsBinding
 
+    private val alarmReceiver = AlarmReceiver()
+
     companion object {
         private const val ALARM_TIME = "09:00"
     }
@@ -51,14 +53,11 @@ class SettingsFragment : Fragment() {
     }
 
     private fun setDailyReminder() {
-        val alarmReceiver = AlarmReceiver()
-
-        val repeatMessage = "Lets find new popular Github User "
         alarmReceiver.setRepeatingAlarm(
             requireContext(),
             AlarmReceiver.TYPE_REPEATING,
             ALARM_TIME,
-            repeatMessage
+            getString(R.string.lets_find_github_users)
         ) {
             Toast.makeText(
                 requireContext(),
@@ -69,7 +68,6 @@ class SettingsFragment : Fragment() {
     }
 
     private fun removeDailyReminder() {
-        val alarmReceiver = AlarmReceiver()
 
         alarmReceiver.cancelAlarm(
             requireContext(),

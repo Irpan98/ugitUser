@@ -21,4 +21,7 @@ interface FavoriteDao {
 
     @Query("SELECT * FROM favorite")
     fun ContentProviderGetFavorites(): Cursor
+
+    @Query("SELECT * FROM favorite")
+    fun getFavoritesWidget(): List<FavoriteModel>
 }

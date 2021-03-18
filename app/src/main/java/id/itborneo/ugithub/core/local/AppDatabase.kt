@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import id.itborneo.ugithub.core.local.DatabaseConstant.TABLE_NAME
 
 @Database(
     entities = [FavoriteModel::class],
@@ -16,7 +17,6 @@ abstract class AppDatabase : RoomDatabase() {
 
     companion object {
         private var INSTANCE: AppDatabase? = null
-        const  val TABLE_NAME = "db_favorite"
 
 
         fun getInstance(context: Context): AppDatabase {

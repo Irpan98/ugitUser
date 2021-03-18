@@ -7,14 +7,14 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "favorite")
 data class FavoriteModel(
     @PrimaryKey val id: Int,
-    @ColumnInfo(name = FavoriteProperty.LOGIN) val login: String,
-    @ColumnInfo(name = FavoriteProperty.COMPANY) val company: String,
-    @ColumnInfo(name = FavoriteProperty.PUBLIC_REPOS) val publicRepos: String,
-    @ColumnInfo(name = FavoriteProperty.EMAIL) val email: String,
-    @ColumnInfo(name = FavoriteProperty.FOLLOWERS) val followers: Int,
-    @ColumnInfo(name = FavoriteProperty.AVATAR_URL) val avatarUrl: String,
-    @ColumnInfo(name = FavoriteProperty.HTML_URL) val htmlUrl: String,
-    @ColumnInfo(name = FavoriteProperty.FOLLOWING) val following: Int,
-    @ColumnInfo(name = FavoriteProperty.NAME) val name: String,
-    @ColumnInfo(name = FavoriteProperty.LOCATION) val location: String
+    @ColumnInfo(name = DatabaseConstant.LOGIN) val login: String,
+    @ColumnInfo(name = DatabaseConstant.COMPANY) val company: String,
+    @ColumnInfo(name = DatabaseConstant.PUBLIC_REPOS) val publicRepos: String,
+    @ColumnInfo(name = DatabaseConstant.EMAIL) val email: String,
+    @ColumnInfo(name = DatabaseConstant.FOLLOWERS) val followers: Int,
+    @ColumnInfo(name = DatabaseConstant.AVATAR_URL) val avatarUrl: String,
+    @ColumnInfo(name = DatabaseConstant.HTML_URL) val htmlUrl: String,
+    @ColumnInfo(name = DatabaseConstant.FOLLOWING) val following: Int,
+    @ColumnInfo(name = DatabaseConstant.NAME) val name: String,
+    @ColumnInfo(name = DatabaseConstant.LOCATION) val location: String
 )

@@ -1,4 +1,4 @@
-package id.itborneo.ugitfavorite.networks
+package id.itborneo.ugitfavorite.core.networks
 
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor

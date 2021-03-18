@@ -1,6 +1,6 @@
 package id.itborneo.ugitfavorite.core.repository
 
-import id.itborneo.ugitfavorite.networks.ApiConfig.apiService
+import id.itborneo.ugitfavorite.core.networks.ApiConfig.apiService
 
 class MainRepository {
     private val api = apiService
