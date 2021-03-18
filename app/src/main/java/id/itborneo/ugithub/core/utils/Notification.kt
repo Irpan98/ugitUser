@@ -9,7 +9,7 @@ import android.media.RingtoneManager
 import android.os.Build
 import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
-import id.itborneo.ugithub.MainActivity
+import id.itborneo.ugithub.main.MainActivity
 import id.itborneo.ugithub.R
 
 

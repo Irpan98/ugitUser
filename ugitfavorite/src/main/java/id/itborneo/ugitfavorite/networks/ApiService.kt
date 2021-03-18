@@ -1,8 +1,8 @@
 package id.itborneo.ugitfavorite.networks
 
 import id.itborneo.ugitfavorite.BuildConfig
-import id.itborneo.ugitfavorite.UserDetailModel
-import id.itborneo.ugitfavorite.UserModel
+import id.itborneo.ugitfavorite.core.model.UserDetailModel
+import id.itborneo.ugitfavorite.core.model.UserModel
 import retrofit2.http.GET
 import retrofit2.http.Headers
 import retrofit2.http.Path

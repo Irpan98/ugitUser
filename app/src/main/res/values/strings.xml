@@ -32,6 +32,8 @@
     <string name="ch_daily_reminder">channel_daily_reminder</string>
     <string name="daily_reminder_success">Success Added Daily Reminder</string>
     <string name="daily_reminder_removed">Daily Reminder has Removed</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="add_widget">Add widget</string>
 
 
 </resources>
