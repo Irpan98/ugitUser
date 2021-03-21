@@ -32,7 +32,6 @@
             android:layout_height="match_parent"
             android:layout_marginHorizontal="6dp"
             android:overScrollMode="never"
-            android:paddingTop="@dimen/padding_layout"
             android:paddingBottom="5dp"
             android:visibility="visible"
             tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

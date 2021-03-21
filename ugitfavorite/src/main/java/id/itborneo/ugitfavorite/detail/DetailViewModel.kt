@@ -24,8 +24,8 @@ class DetailViewModel(private val repository: MainRepository, val userModel: Use
             emit(Resource.loading(data = null))
             try {
                 emit(Resource.success(data = repository.getDetailUser(userModel.login ?: "")))
-            } catch (exception: Exception) {
-                emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            } catch (throwable: Throwable) {
+                emit(Resource.error(data = null, message = throwable.message ?: "Error Occurred!"))
             }
         }
     }

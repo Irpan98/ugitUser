@@ -10,10 +10,12 @@ import id.itborneo.ugithub.databinding.ItemInDetailBinding
 class ListInDetailAdapter(private val listener: (UserModel) -> Unit) :
     RecyclerView.Adapter<ListInDetailAdapter.ViewHolder>() {
 
-    private var cities = listOf<UserModel>()
+    private var cities = mutableListOf<UserModel>()
     fun set(cities: List<UserModel>) {
-        this.cities = cities
+        this.cities.clear()
+        this.cities = cities as MutableList<UserModel>
         notifyDataSetChanged()
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {

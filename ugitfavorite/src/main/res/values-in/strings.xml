@@ -1,2 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+    <string name="app_name">Ugit Favorite</string>
+    <string name="image_user">Gambar User Github</string>
+    <string name="settings">Pengaturan</string>
+    <string name="followers">Pengikut</string>
+    <string name="following">Mengikuti</string>
+    <string name="repositories">repositori</string>
+    <string name="favorites">Favorit</string>
+    <string name="list_is_empty">List Kosong</string>
+    <string name="thanks_to">Terima Kasih Hoai Le Lottie for animation</string>
+    <string name="in_development">Fitur Sedang Pengembangan</string>
+    <string name="back">Kembali</string>
+    <string name="empty_list_favorite">Tidak ada User Favorit</string>
+    <string name="error">Terjadi Kesalahan, Coba lagi nanti</string>
+    <string name="home">Beranda</string>
+    <string name="favorite">Favorit</string>
+</resources>

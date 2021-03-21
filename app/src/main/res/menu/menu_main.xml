@@ -12,6 +12,6 @@
         android:title="@string/favorite" />
     <item
         android:id="@+id/aboutMeFragment"
-        android:icon="@drawable/ic_user"
+        android:icon="@drawable/ic_settings"
         android:title="@string/settings" />
 </menu>

@@ -10,9 +10,10 @@ import id.itborneo.ugitfavorite.databinding.ItemInDetailBinding
 class ListInDetailAdapter(private val listener: (UserModel) -> Unit) :
     RecyclerView.Adapter<ListInDetailAdapter.ViewHolder>() {
 
-    private var cities = listOf<UserModel>()
+    private var cities = mutableListOf<UserModel>()
     fun set(cities: List<UserModel>) {
-        this.cities = cities
+        this.cities.clear()
+        this.cities = cities as MutableList<UserModel>
         notifyDataSetChanged()
     }
 

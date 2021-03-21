@@ -3,6 +3,7 @@
     package="id.itborneo.ugithub">
 
     <uses-permission android:name="android.permission.INTERNET" />
+
     <permission
         android:name="id.itborneo.ugithub.READ_DATABASE"
         android:protectionLevel="normal" />
@@ -13,13 +14,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Ugithub">
-        <activity android:name=".main.MainActivity">
+        <activity android:name=".splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".main.MainActivity" />
         <activity android:name=".detail.DetailActivity" />
 
         <receiver android:name=".widget.UgithubWidget">
@@ -35,7 +37,6 @@
         <service
             android:name=".widget.UgithubWidgetService"
             android:permission="android.permission.BIND_REMOTEVIEWS" />
-
 
         <meta-data
             android:name="preloaded_fonts"

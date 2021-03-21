@@ -56,7 +56,6 @@ class SettingsFragment : Fragment() {
     private fun setDailyReminder() {
         alarmReceiver.setRepeatingAlarm(
             requireContext(),
-            AlarmReceiver.TYPE_REPEATING,
             ALARM_TIME,
             getString(R.string.lets_find_github_users)
         ) {
@@ -71,7 +70,6 @@ class SettingsFragment : Fragment() {
     private fun removeDailyReminder() {
         alarmReceiver.cancelAlarm(
             requireContext(),
-            AlarmReceiver.TYPE_REPEATING
         ) {
             Toast.makeText(
                 requireContext(),
@@ -93,9 +91,15 @@ class SettingsFragment : Fragment() {
     }
 
     private fun initButtonListener() {
-        binding.llSetLanguage.setOnClickListener {
+        binding.llChangeLanguage.setOnClickListener {
             val mIntent = Intent(Settings.ACTION_LOCALE_SETTINGS)
             startActivity(mIntent)
+        }
+
+        binding.llDailyReminder.setOnClickListener {
+            binding.swDaily.apply {
+                isChecked = !isChecked
+            }
         }
     }
 

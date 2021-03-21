@@ -28,4 +28,6 @@
     <string name="add_widget">Add widget</string>
     <string name="lets_find_github_users">Ayo temukan Pengguna Github Populer</string>
     <string name="widget_image">gambar image</string>
+    <string name="notification">notifikasi</string>
+    <string name="app_logo">logo aplikasi</string>
 </resources>

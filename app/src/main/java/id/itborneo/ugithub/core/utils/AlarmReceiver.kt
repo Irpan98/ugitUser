@@ -11,38 +11,26 @@ import java.util.*
 
 class AlarmReceiver : BroadcastReceiver() {
 
-
     companion object {
-        const val TYPE_ONE_TIME = "OneTimeAlarm"
-        const val TYPE_REPEATING = "repeatingAlarm"
-
         const val EXTRA_MESSAGE = "message"
-        const val EXTRA_TYPE = "type"
 
-
-        private const val ID_ONETIME = 100
         private const val ID_REPEATING = 101
-
         private const val TIME_FORMAT = "HH:mm"
 
     }
 
     override fun onReceive(context: Context, intent: Intent) {
-        val type = intent.getStringExtra(EXTRA_TYPE)
         val message = intent.getStringExtra(EXTRA_MESSAGE)
 
-        val notifyId = if (type.equals(TYPE_REPEATING, true)) ID_ONETIME else ID_REPEATING
-
-
+        val notifyId = ID_REPEATING
         if (message != null) {
             Notification.showDailyReminder(context, message, notifyId)
         }
     }
 
-
-    private fun isDateInvalid(date: String, format: String): Boolean {
+    private fun isDateInvalid(date: String): Boolean {
         return try {
-            val df = SimpleDateFormat(format, Locale.getDefault())
+            val df = SimpleDateFormat(TIME_FORMAT, Locale.getDefault())
             df.isLenient = false
             df.parse(date)
             false
@@ -51,20 +39,17 @@ class AlarmReceiver : BroadcastReceiver() {
         }
     }
 
-
     fun setRepeatingAlarm(
         context: Context,
-        type: String,
         time: String,
         message: String,
         success: () -> Unit
     ) {
 
-        if (isDateInvalid(time, TIME_FORMAT)) return
+        if (isDateInvalid(time)) return
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
         intent.putExtra(EXTRA_MESSAGE, message)
-        intent.putExtra(EXTRA_TYPE, type)
 
         val timeArray = time.split(":".toRegex()).dropLastWhile {
             it.isEmpty()
@@ -84,14 +69,12 @@ class AlarmReceiver : BroadcastReceiver() {
             pendingIntent
         )
         success()
-
     }
 
-    fun cancelAlarm(context: Context, type: String, success: () -> Unit) {
+    fun cancelAlarm(context: Context, success: () -> Unit) {
         val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         val intent = Intent(context, AlarmReceiver::class.java)
-        val requestCode =
-            if (type.equals(TYPE_ONE_TIME, ignoreCase = true)) ID_ONETIME else ID_REPEATING
+        val requestCode = ID_REPEATING
         val pendingIntent = PendingIntent.getBroadcast(context, requestCode, intent, 0)
         pendingIntent.cancel()
         alarmManager.cancel(pendingIntent)

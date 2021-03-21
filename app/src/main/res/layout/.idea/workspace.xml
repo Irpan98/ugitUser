@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8acabd1a-85eb-46b5-8ff5-7aad755bfa1a" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/aboutme/SettingsFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/aboutme/SettingsFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/core/local/DatabaseConstant.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/core/local/DatabaseConstant.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/core/local/FavoriteContentProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/core/local/FavoriteContentProvider.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/core/local/FavoriteDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/core/local/FavoriteDao.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/core/networks/ApiConfig.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/core/networks/ApiConfig.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/core/networks/ApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/core/networks/ApiService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/core/repository/MainRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/core/repository/MainRepository.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/detail/list/ListInDetailAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/detail/list/ListInDetailAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/favorite/FavoriteAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/favorite/FavoriteAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/favorite/FavoriteViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/favorite/FavoriteViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/home/HomeAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/home/HomeAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/home/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/home/HomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/widget/UgithubRemoteViewsFactory.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/widget/UgithubRemoteViewsFactory.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/widget/UgithubWidget.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../java/id/itborneo/ugithub/widget/UgithubWidget.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../drawable-nodpi/darth_vader.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../drawable-nodpi/example_appwidget_preview.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../drawable-nodpi/falcon.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/fragment_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/fragment_settings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/image_banner_widget.xml" beforeDir="false" afterPath="$PROJECT_DIR$/widget_ugithub.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ugithub_widget.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/widget_item.xml" beforeDir="false" afterPath="$PROJECT_DIR$/widget_item.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../menu/menu_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../menu/menu_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../values-in/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../values-in/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../values/strings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../xml/ugithub_widget_info.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../xml/ugithub_widget_info.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../ugitfavorite/src/main/java/id/itborneo/ugitfavorite/core/model/FavoriteModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../ugitfavorite/src/main/java/id/itborneo/ugitfavorite/core/model/FavoriteModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../ugitfavorite/src/main/java/id/itborneo/ugitfavorite/core/networks/ApiService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../ugitfavorite/src/main/java/id/itborneo/ugitfavorite/core/networks/ApiService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../ugitfavorite/src/main/java/id/itborneo/ugitfavorite/core/utils/ContentProvider.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../ugitfavorite/src/main/java/id/itborneo/ugitfavorite/core/utils/ContentProvider.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../ugitfavorite/src/main/java/id/itborneo/ugitfavorite/detail/DetailActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../ugitfavorite/src/main/java/id/itborneo/ugitfavorite/detail/DetailActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../ugitfavorite/src/main/java/id/itborneo/ugitfavorite/detail/DetailViewModel.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../ugitfavorite/src/main/java/id/itborneo/ugitfavorite/detail/DetailViewModel.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../ugitfavorite/src/main/java/id/itborneo/ugitfavorite/detail/list/ListInDetailAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../ugitfavorite/src/main/java/id/itborneo/ugitfavorite/detail/list/ListInDetailAdapter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../ugitfavorite/src/main/java/id/itborneo/ugitfavorite/main/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../../../../../ugitfavorite/src/main/java/id/itborneo/ugitfavorite/main/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../../../../ugitfavorite/src/main/java/id/itborneo/ugitfavorite/main/MainViewModel.kt" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../../.." />
+  </component>
+  <component name="ProjectId" id="1pvlqJkKTXhKCQ9FA3vQihtNzK7" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="android.sdk.path" value="$PROJECT_DIR$/../../../../../../../../../SDK" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../.." />
+    <property name="project.structure.last.edited" value="SDK Location" />
+    <property name="project.structure.proportion" value="0.17" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="dev.polek.adbwifi.settings.AdbWifiConfigurable" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8acabd1a-85eb-46b5-8ff5-7aad755bfa1a" name="Default Changelist" comment="" />
+      <created>1616071633631</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1616071633631</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="740" y="275" key="FileChooserDialogImpl" timestamp="1616071769774">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1616071769774" />
+  </component>
+</project>

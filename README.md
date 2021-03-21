@@ -39,3 +39,10 @@ Features
 - LiveCycle
 - Updated dependencies
 - ViewModel Factory
+- Kotlin Shared Preferences 
+- Toasty
+- Stack Widget
+- Content Provider
+- Two App in One Project
+- SpinKit Loading
+- Splash Screen

@@ -1,19 +1,14 @@
 package id.itborneo.ugithub.detail
 
 import android.util.Log
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.liveData
+import androidx.lifecycle.*
 import id.itborneo.ugithub.core.local.FavoriteModel
 import id.itborneo.ugithub.core.model.UserDetailModel
 import id.itborneo.ugithub.core.model.UserModel
 import id.itborneo.ugithub.core.repository.MainRepository
 import id.itborneo.ugithub.core.utils.DataMapperModel
 import id.itborneo.ugithub.core.utils.Resource
-import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 
 class DetailViewModel(private val repository: MainRepository, val userModel: UserModel) :
@@ -38,14 +33,14 @@ class DetailViewModel(private val repository: MainRepository, val userModel: Use
             emit(Resource.loading(data = null))
             try {
                 emit(Resource.success(data = repository.getDetailUser(userModel.login ?: "")))
-            } catch (exception: Exception) {
-                emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            } catch (throwable: Throwable) {
+                emit(Resource.error(data = null, message = throwable.message ?: "Error Occurred!"))
             }
         }
     }
 
     private fun checkIsFavorite(id: Int) {
-        CoroutineScope(GlobalScope.coroutineContext).launch {
+        viewModelScope.launch {
             favorite = repository.geSingleFavorite(id)
 
             if (favorite == null || id == 0) {
@@ -58,7 +53,7 @@ class DetailViewModel(private val repository: MainRepository, val userModel: Use
     }
 
     fun addToFavorite(user: UserDetailModel) =
-        CoroutineScope(GlobalScope.coroutineContext).launch {
+        viewModelScope.launch {
             repository.addFavorite(
                 DataMapperModel.singleDetailUserToFavorite(user)
             )
@@ -66,7 +61,7 @@ class DetailViewModel(private val repository: MainRepository, val userModel: Use
         }
 
     fun removeFavorite() {
-        CoroutineScope(GlobalScope.coroutineContext).launch {
+        viewModelScope.launch {
             val fav = favorite
             if (fav != null) {
                 repository.removeFavorite(fav)

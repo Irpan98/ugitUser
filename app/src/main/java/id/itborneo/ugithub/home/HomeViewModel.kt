@@ -18,8 +18,8 @@ class HomeViewModel(private val repo: MainRepository) : ViewModel() {
         emit(Resource.loading(data = null))
         try {
             emit(Resource.success(data = repo.getUsers()))
-        } catch (exception: Exception) {
-            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        } catch (throwable: Throwable) {
+            emit(Resource.error(data = null, message = throwable.message ?: "Error Occurred!"))
         }
     }
 
@@ -28,11 +28,11 @@ class HomeViewModel(private val repo: MainRepository) : ViewModel() {
         try {
             usersSearched.postValue(Resource.success(data = repo.searchUsers(query)))
 
-        } catch (exception: Exception) {
+        } catch (throwable: Throwable) {
             usersSearched.postValue(
                 Resource.error(
                     data = null,
-                    message = exception.message ?: "Error Occurred!"
+                    message = throwable.message ?: "Error Occurred!"
                 )
             )
         }

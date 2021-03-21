@@ -11,10 +11,11 @@ import id.itborneo.ugithub.databinding.ItemUserBinding
 class HomeAdapter(private val listener: (UserModel) -> Unit) :
     RecyclerView.Adapter<HomeAdapter.ViewHolder>() {
 
-    private var cities = listOf<UserModel>()
+    private var cities = mutableListOf<UserModel>()
 
     fun set(cities: List<UserModel>) {
-        this.cities = cities
+        this.cities.clear()
+        this.cities = cities as MutableList<UserModel>
         notifyDataSetChanged()
     }
 

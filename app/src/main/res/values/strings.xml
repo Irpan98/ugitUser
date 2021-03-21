@@ -32,6 +32,8 @@
     <string name="add_widget">Add widget</string>
     <string name="lets_find_github_users">Lets find new popular Github User</string>
     <string name="widget_image">widget image</string>
+    <string name="notification">notification</string>
+    <string name="app_logo">app logo</string>
 
 
 </resources>

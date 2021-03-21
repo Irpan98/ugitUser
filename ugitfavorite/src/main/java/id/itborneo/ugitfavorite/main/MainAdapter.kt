@@ -10,10 +10,10 @@ import id.itborneo.ugitfavorite.databinding.ItemUserBinding
 class MainAdapter(private val listener: (FavoriteModel) -> Unit) :
     RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
-    private var cities = listOf<FavoriteModel>()
+    private var cities = mutableListOf<FavoriteModel>()
     fun set(cities: List<FavoriteModel>) {
-        this.cities = cities
-
+        this.cities.clear()
+        this.cities = cities as MutableList<FavoriteModel>
         notifyDataSetChanged()
     }
 

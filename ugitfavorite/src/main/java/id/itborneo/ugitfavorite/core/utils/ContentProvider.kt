@@ -23,8 +23,8 @@ object ContentProvider {
                 cursor.getString(cursor.getColumnIndexOrThrow(DatabaseConstant.NAME)),
                 cursor.getString(cursor.getColumnIndexOrThrow(DatabaseConstant.LOCATION)),
             )
-        } catch (e: Exception) {
-            Log.e("ContentProvider", "mapCursorToFavorite $e")
+        } catch (throwable: Throwable) {
+            Log.e("ContentProvider", "mapCursorToFavorite $throwable")
         }
         cursor.moveToNext()
 
